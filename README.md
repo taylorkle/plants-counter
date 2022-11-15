@@ -1,5 +1,7 @@
 # README
 
+favicon: https://favicon.io/emoji-favicons/broccoli/
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
