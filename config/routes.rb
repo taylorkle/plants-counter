@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   get '/home', to: 'homes#index'
   get '/plants', to: 'homes#index'
 
+  namespace :api do
+    namespace :v1 do
+      resources :plants, only: [:index]
+    end
+  end
+
 end
