@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/plants/search', to:'plants#search'
-      resources :plants, only: [:index]
+      resources :plants, only: [:create]
     end
   end
 

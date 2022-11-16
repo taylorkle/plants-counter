@@ -13,15 +13,20 @@ class Api::V1::PlantsController < ApplicationController
 
 
     api_response = Faraday.get(url)
-    parsed_response = JSON.parse(api_response.body)
+    parsed_response = JSON.parse(api_response.body)["results"].first
 
-    parsed_response["results"].first["name"] = parsed_response["results"].first["name"].capitalize
+    parsed_response["name"] = parsed_response["name"].capitalize
 
-    render json: parsed_response["results"].first
+    render json: parsed_response
+
+    #    Plant.new(api_id: parsed_response["id"], name: parsed_response["name"], image: parsed_response["image"])  --create new plant with
+
 
   end
 
-  def index
+  def create
+
+
 
   end
 end
