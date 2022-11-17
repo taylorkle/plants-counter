@@ -40,10 +40,10 @@ const SearchBar = props => {
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search">
       <label>Search</label>
       <input type ="text" name="searchString" value={searchString} onChange={handleChange} />
-      <input type="submit" value="Submit" />
+      <input className="submit" type="submit" value="Submit" />
     </form>
   )
 }

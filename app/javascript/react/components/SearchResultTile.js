@@ -1,19 +1,8 @@
 import React from 'react'
+import { useState } from 'react'
+import AddPlantButton from './AddPlantButton.js'
 
 const SearchResultTile = props => {
-
-  const postPlant = async () => {
-    try {
-
-    }
-    catch(error) {
-
-    }
-  }
-
-  const handleClick = event => {
-    postPlant()
-  }
 
   let result = false
   if (props.searchResult.image) {
@@ -21,8 +10,12 @@ const SearchResultTile = props => {
     if (result) {
       return(
       <div>
-        <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`}></img>
-        <button onClick={handleClick}>+Add plant</button>
+        <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
+        {/* alt attribute is not rendering */}
+        < AddPlantButton
+          searchResult = {props.searchResult}
+          setSearchResult = {props.setSearchResult}
+        />
       </div>
       )
   }

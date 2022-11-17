@@ -19,6 +19,7 @@ const PlantSearchContainer = props => {
       <div>
       <SearchResultTile
         searchResult = {searchResult}
+        setSearchResult = {setSearchResult}
       />
       </div>
     </div>

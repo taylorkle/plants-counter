@@ -19,16 +19,9 @@ class Api::V1::PlantsController < ApplicationController
 
     render json: parsed_response
 
-    #    Plant.new(api_id: parsed_response["id"], name: parsed_response["name"], image: parsed_response["image"])  --create new plant with
-
-
   end
 
-  def create
 
-
-
-  end
 end
 
 
