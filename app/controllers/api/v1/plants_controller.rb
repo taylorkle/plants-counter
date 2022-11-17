@@ -1,38 +1,23 @@
-require "faraday"
-require "json"
-
 class Api::V1::PlantsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
-  def search
-    plant_name = params["search_string"]
+  def create
 
-    api_key = ENV["SPOONACULAR_API_KEY"]
+    plant_data = params["plantData"]
+    user = current_user
 
-    url = "https://api.spoonacular.com/food/ingredients/search?apiKey=#{api_key}&query=#{plant_name}&number=1"
+    plant = Plant.new(api_id: plant_data["id"], name: plant_data["name"], image: plant_data["image"])
 
-
-    api_response = Faraday.get(url)
-    parsed_response = JSON.parse(api_response.body)["results"].first
-
-    parsed_response["name"] = parsed_response["name"].capitalize
-
-    render json: parsed_response
+    if plant.save
+      plant_entry = PlantEntry.new(plant: plant, user: user)
+      if plant_entry.save
+        render json: { plant: plant, user_id: user["id"] }
+      else
+        render json: { error: plant_entry.errors.full_messages }
+      end
+    else
+      render json: { error_status: true, error: plant.errors.full_messages }, status: 400
+    end
 
   end
-
-
 end
-
-
-#models folder with plants wrapper     @20min in interacting with a third party api
-#initialize with instance variable of @plants = []
-#plants_request(query)
-#retrieve_plants(query)
-#private
-  #request function
-    #makes Farady request using base URL and query argument
-    #returns JSON.parse(response.body)
-  #format parsed data and return that so you can assign to an instance variable
-#public
-  #call on methods to assign instance variable

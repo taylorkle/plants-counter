@@ -7,7 +7,7 @@ const SearchBar = props => {
 
   const fetchResult = async () => {
     try {
-      const response = await fetch("/api/v1/plants/search", {
+      const response = await fetch("/api/v1/spoonacular/search", {
         method: "POST",
         credentials: "same-origin",
         body: JSON.stringify({

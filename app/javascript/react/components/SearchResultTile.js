@@ -1,31 +1,56 @@
 import React from 'react'
 import { useState } from 'react'
-import AddPlantButton from './AddPlantButton.js'
+
 
 const SearchResultTile = props => {
 
-  let result = false
-  if (props.searchResult.image) {
-    result = true
-    if (result) {
-      return(
-      <div>
-        <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
-        {/* alt attribute is not rendering */}
-        < AddPlantButton
-          searchResult = {props.searchResult}
-          setSearchResult = {props.setSearchResult}
-        />
-      </div>
-      )
+  const postPlant = async () => {
+    try {
+      const response = await fetch("/api/v1/plants", {
+        method: "POST",
+        credentials: "same-origin",
+        body: JSON.stringify({
+          plantData: props.searchResult
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+      }
+    })
+    const responseBody = await response.json()
+    debugger
+    props.setSearchResult({
+      id: null,
+      name: "",
+      image: ""
+    })
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      throw new Error(errorMessage)
+    }
+    // props.setUserId(responseBody.user_id)
+    props.setPlantAdded(true)
+  } catch(error) {
+      // debugger     getting message that responseBody is not defined
+      console.error(`Error in Fetch: ${error.message}`)
+      props.setError(responseBody.error)
+    }
   }
-}
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    postPlant()
+  }
 
   return(
     <div>
       <h1>{props.searchResult.name}</h1>
         {/* h1 is not rendering when I edit my result variable to include a button */}
-      {result}
+      <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
+        {/* alt attribute is not rendering */}
+      <form onClick={handleSubmit}>
+        <input type="submit" value="+ Add Plant"/>
+      </form>
     </div>
   )
 }
