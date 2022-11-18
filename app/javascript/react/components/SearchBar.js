@@ -5,6 +5,12 @@ import { useState } from 'react'
 const SearchBar = props => {
   const [searchString, setSearchString] = useState("")
 
+  let validSearch = false
+  if (searchString.strip !== "" && searchString.match(/^[a-zA-Z]+$/)) {
+    validSearch = true
+  }
+
+
   const fetchResult = async () => {
     try {
       const response = await fetch("/api/v1/spoonacular/search", {
@@ -29,14 +35,18 @@ const SearchBar = props => {
     }
   }
 
-  const handleChange = event => {
-    setSearchString(event.currentTarget.value)
-  }
-
   const handleSubmit = event => {
     event.preventDefault()
-    fetchResult()
+    if (validSearch) {
+      fetchResult()
+    } else {
+      console.log("error")
+    }
     setSearchString("")
+  }
+
+  const handleChange = event => {
+    setSearchString(event.currentTarget.value)
   }
 
   return(

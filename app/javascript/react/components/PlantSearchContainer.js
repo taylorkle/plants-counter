@@ -7,18 +7,11 @@ import { useState } from 'react'
 const PlantSearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
     id: null,
+    name: "",
+    image: ""
   })
   const [plantAdded, setPlantAdded] = useState(false)
-  const [userId, setUserId] = useState(null)
   const [error, setError] = useState([])
-
-  // const fetchUser = async () => {
-
-  // }
-
-  // useEffect(() => {
-  //   fetchUser()
-  // }, [])
 
   let searchResultDisplay = null
   if (searchResult.id) {
@@ -30,10 +23,7 @@ const PlantSearchContainer = props => {
       setError = {setError}
     />
   } else if (plantAdded === true) {
-    searchResultDisplay =
-    <SuccessTile
-      user = {userId}
-    />
+    searchResultDisplay = <SuccessTile />
   }
 
   return (

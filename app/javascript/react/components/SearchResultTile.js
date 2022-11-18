@@ -18,7 +18,6 @@ const SearchResultTile = props => {
       }
     })
     const responseBody = await response.json()
-    debugger
     props.setSearchResult({
       id: null,
       name: "",
@@ -28,7 +27,6 @@ const SearchResultTile = props => {
       const errorMessage = `${response.status} (${response.statusText})`
       throw new Error(errorMessage)
     }
-    // props.setUserId(responseBody.user_id)
     props.setPlantAdded(true)
   } catch(error) {
       // debugger     getting message that responseBody is not defined

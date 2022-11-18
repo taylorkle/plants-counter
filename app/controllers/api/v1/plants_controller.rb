@@ -11,9 +11,10 @@ class Api::V1::PlantsController < ApplicationController
     if plant.save
       plant_entry = PlantEntry.new(plant: plant, user: user)
       if plant_entry.save
-        render json: { plant: plant, user_id: user["id"] }
+        render json: { plant: plant }
       else
-        render json: { error: plant_entry.errors.full_messages }
+        render json: { error_status: true, error: plant_entry.errors.full_messages },
+        status: 400
       end
     else
       render json: { error_status: true, error: plant.errors.full_messages }, status: 400
