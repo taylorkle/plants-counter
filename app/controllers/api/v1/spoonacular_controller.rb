@@ -14,7 +14,6 @@ class Api::V1::SpoonacularController < ApplicationController
 
     api_response = Faraday.get(url)
     parsed_response = JSON.parse(api_response.body)["results"].first
-    binding.pry
 
     parsed_response["name"] = parsed_response["name"].capitalize
 
