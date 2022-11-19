@@ -4,6 +4,10 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.integer :api_id, null: false
       t.string :image
+      t.timestamps null: false
     end
   end
 end
+
+
+
