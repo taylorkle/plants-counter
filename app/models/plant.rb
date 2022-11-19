@@ -4,3 +4,5 @@ class Plant < ApplicationRecord
   has_many :plant_entries
   has_many :users, through: :plant_entries
 end
+
+
