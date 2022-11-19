@@ -83,3 +83,4 @@ production:
   database: plants-counter_production
   username: plants-counter
   password: <%= ENV['PLANTS-COUNTER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
