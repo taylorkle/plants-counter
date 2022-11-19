@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2022_11_16_204810) do
   create_table "plant_entries", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["plant_id"], name: "index_plant_entries_on_plant_id"
     t.index ["user_id"], name: "index_plant_entries_on_user_id"
   end
@@ -26,10 +28,15 @@ ActiveRecord::Schema.define(version: 2022_11_16_204810) do
     t.string "name", null: false
     t.integer "api_id", null: false
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.integer "plant_goal", default: 30
+    t.integer "plant_number", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
