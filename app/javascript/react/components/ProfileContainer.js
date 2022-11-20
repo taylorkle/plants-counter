@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react"
 
-
 const ProfileContainer = props => {
-  const [getUser, setUser] = useState("")
+  const [user, setUser] = useState({})
 
   const fetchUser = async () => {
     try {
       const response = await fetch(`/api/v1/users/${props.match.params.id}`)
       if (!response.ok) {
-        const errorMessage = `$(response.status) (${response.statusText})`
+        const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      let user = responseBody
-      setUser(user)
+      let userData = responseBody.user
+      setUser(userData)
     }
     catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
@@ -24,10 +23,9 @@ const ProfileContainer = props => {
     fetchUser()
   }, [])
 
-
   return(
     <div>
-      {props.match.params.id}
+      <h1>{user.first_name}'s Plant Intake </h1>
     </div>
   )
 }
