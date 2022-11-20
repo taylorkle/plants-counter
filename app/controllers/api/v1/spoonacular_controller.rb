@@ -1,8 +1,4 @@
-require "faraday"
-require "json"
-
-class Api::V1::SpoonacularController < ApplicationController
-  protect_from_forgery unless: -> { request.format.json? }
+class Api::V1::SpoonacularController < ApiController
 
   def search
     plant_name = params["search_string"]
@@ -11,12 +7,16 @@ class Api::V1::SpoonacularController < ApplicationController
 
     url = "https://api.spoonacular.com/food/ingredients/search?apiKey=#{api_key}&query=#{plant_name}&number=1"
 
-
     api_response = Faraday.get(url)
-    parsed_response = JSON.parse(api_response.body)["results"].first
 
-    parsed_response["name"] = parsed_response["name"].capitalize
-
-    render json: parsed_response
+    parsed_response = JSON.parse(api_response.body)
+    if !parsed_response["results"].empty?
+      results = parsed_response["results"].first
+      results["name"].capitalize!
+      render json: results
+    else
+      render json: { errorStatus: true, error: "No results matched your search" }, status: 400
+    end
   end
 end
+

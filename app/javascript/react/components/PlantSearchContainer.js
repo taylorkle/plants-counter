@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useState } from 'react'
 import SearchBar from './SearchBar.js'
 import SearchResultTile from './SearchResultTile.js'
 import SuccessTile from './SuccessTile.js'
-import { useState } from 'react'
+
 
 const PlantSearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
@@ -30,7 +31,8 @@ const PlantSearchContainer = props => {
     <div>
       <h1 className = "green-heading center-text">Which plant based foods have you eaten this week?</h1>
       <SearchBar
-        setSearchResult={setSearchResult}
+        setSearchResult = {setSearchResult}
+        setError = {setError}
       />
       {error}
       {searchResultDisplay}

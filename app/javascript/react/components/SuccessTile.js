@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const SuccessTile = props => {
-
   const [user, setUser] = useState({
     id: null,
     email: ""
@@ -17,7 +16,6 @@ const SuccessTile = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      debugger
       setUser(responseBody.user)
     } catch(error) {
       console.error(`Error in Fetch ${error.message}`)
