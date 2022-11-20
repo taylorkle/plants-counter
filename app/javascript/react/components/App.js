@@ -1,5 +1,6 @@
 import React from 'react'
 import Homepage from './Homepage.js'
+import ProfileContainer from './ProfileContainer.js'
 import PlantSearchContainer from './PlantSearchContainer.js'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
@@ -9,6 +10,7 @@ export const App = (props) => {
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route exact path='/home' component={Homepage} />
+        <Route exact path='/users/:id' component={ProfileContainer} />
         <Route exact path='/plants' component={PlantSearchContainer} />
       </Switch>
     </BrowserRouter>
