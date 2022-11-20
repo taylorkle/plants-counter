@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get '/home', to: 'homes#index'
   get '/plants', to: 'homes#athenticate'
-  # get 'users/sign_in', to: ''
 
   namespace :api do
     namespace :v1 do
@@ -23,5 +22,4 @@ Rails.application.routes.draw do
       resources :plants, only: [:create]
     end
   end
-
 end

@@ -2,7 +2,6 @@ class Api::V1::PlantsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def create
-
     plant_data = params["plantData"]
     user = current_user
 
@@ -19,6 +18,5 @@ class Api::V1::PlantsController < ApplicationController
     else
       render json: { error_status: true, error: plant.errors.full_messages }, status: 400
     end
-
   end
 end

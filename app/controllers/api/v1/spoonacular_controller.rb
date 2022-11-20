@@ -18,21 +18,5 @@ class Api::V1::SpoonacularController < ApplicationController
     parsed_response["name"] = parsed_response["name"].capitalize
 
     render json: parsed_response
-
   end
-
-
 end
-
-
-#models folder with plants wrapper     @20min in interacting with a third party api
-#initialize with instance variable of @plants = []
-#plants_request(query)
-#retrieve_plants(query)
-#private
-  #request function
-    #makes Farady request using base URL and query argument
-    #returns JSON.parse(response.body)
-  #format parsed data and return that so you can assign to an instance variable
-#public
-  #call on methods to assign instance variable
