@@ -1,4 +1,5 @@
-User.delete_all
+User.destroy_by(email: "Amy@gmail.com")
+User.destroy_by(email: "Mike@gmail.com")
 
 user_1 = User.create!(first_name: "Mike", email: "Mike@gmail.com", password: "foodie2", plant_goal: 25)
 user_2 = User.create!(first_name: "Amy" , email: "Amy@gmail.com", password: "plants2", plant_goal: 20)
