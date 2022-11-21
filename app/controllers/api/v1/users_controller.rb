@@ -6,4 +6,12 @@ class Api::V1::UsersController < ApiController
       render json: { user: {first_name: user.first_name, plant_goal: user.plant_goal, plant_number: user.plant_number} }
     end
   end
+
+  def index
+      if !current_user.nil?
+        render json: { user: {email: current_user.email, id: current_user.id} }
+      else
+        render json: { errorStatus: true, error: "User not logged in" }
+      end
+  end
 end

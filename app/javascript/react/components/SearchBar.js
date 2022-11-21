@@ -4,20 +4,56 @@ import { useState } from 'react'
 const SearchBar = props => {
   const [searchString, setSearchString] = useState("")
 
-  const handleChange = event => {
-    setSearchString(event.currentTarget.value)
+  const fetchResult = async () => {
+    try {
+      const response = await fetch("/api/v1/spoonacular/search", {
+        method: "POST",
+        credentials: "same-origin",
+        body: JSON.stringify({
+          search_string: searchString
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        }
+      })
+      const responseBody = await response.json()
+      if (!response.ok) {
+        props.setError(responseBody.error)
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      }
+      props.setSearchResult(responseBody)
+    } catch(error) {
+      console.error(`Error in Fetch: ${error.message}`)
+    }
+  }
+
+  let validSearch = false
+  if (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/)) {
+    validSearch = true
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log("search submitted")
+    if (validSearch) {
+      props.setError("")
+      fetchResult()
+    } else {
+      props.setError("Not a valid search")
+    }
+    setSearchString("")
+  }
+
+  const handleChange = event => {
+    setSearchString(event.currentTarget.value)
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search">
       <label>Search</label>
-      <input type ="text" name="searchString" value={searchString} onChange={handleChange} />
-      <input type="submit" value="Submit" />
+      <input type ="text" name="searchString" value={searchString} onChange={handleChange}/>
+      <input className="submit" type="submit" value="Submit" />
     </form>
   )
 }
