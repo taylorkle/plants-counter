@@ -3,9 +3,9 @@ import PlantIndex from "./PlantIndex.js"
 
 const ProfileContainer = props => {
   const [userData, setUser] = useState({
-    first_name: "",
-    plant_goal: null,
-    plant_number: null,
+    firstName: "",
+    plantGoal: null,
+    plantNumber: null,
   })
 
   const fetchUser = async () => {
@@ -18,9 +18,9 @@ const ProfileContainer = props => {
       const responseBody = await response.json()
       let user = responseBody.user
       setUser({
-        first_name: user.first_name,
-        plant_goal: user.plant_goal,
-        plant_number: user.plant_number,
+        firstName: user.first_name,
+        plantGoal: user.plant_goal,
+        plantNumber: user.plant_number
       })
     }
     catch (error) {
@@ -33,8 +33,8 @@ const ProfileContainer = props => {
   }, [])
 
   return(
-    <div>
-      <h1>{userData.first_name}'s Plant Intake </h1>
+    <div className="profile-page">
+      <h1>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h1>
       <PlantIndex/>
     </div>
   )

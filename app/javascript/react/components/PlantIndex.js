@@ -3,7 +3,6 @@ import PlantTile from './PlantTile.js'
 
 const PlantIndex = props => {
   const [plantData, setPlantData] = useState([])
-  debugger
 
   const fetchPlants = async () => {
     try {
@@ -35,9 +34,19 @@ const PlantIndex = props => {
     )
   })
 
+  let displayPlants = null
+  if (plantData.length !== 0) {
+    displayPlants = <h2>Your current plants</h2>
+  }
+
   return(
-    <div>
-      {plantTiles}
+    <div className="grid-container">
+      <div className="grid-x">
+        <div className="cell small-10, medium-4, large-4">
+          {displayPlants}
+          {plantTiles}
+        </div>
+      </div>
     </div>
   )
 }
