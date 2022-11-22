@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 const ProfileContainer = props => {
-  const [user, setUser] = useState({})
+  const [userData, setUser] = useState({})
 
   const fetchUser = async () => {
     try {
@@ -11,8 +11,8 @@ const ProfileContainer = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      let userData = responseBody.user
-      setUser(userData)
+      let user = responseBody.user
+      setUser(user)
     }
     catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
@@ -25,7 +25,7 @@ const ProfileContainer = props => {
 
   return(
     <div>
-      <h1>{user.first_name}'s Plant Intake </h1>
+      <h1>{userData.first_name}'s Plant Intake </h1>
     </div>
   )
 }

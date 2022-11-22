@@ -27,9 +27,9 @@ const SuccessTile = props => {
   }, [])
 
   return(
-    <div>
+    <div className="search-page">
       Added successfully!
-      <button type="button"><Link to ={`/users/${user.id}`}>View On Profile</Link></button>
+      <button type="button"><Link to={`/users/${user.id}`}>View On Profile</Link></button>
     </div>
   )
 }

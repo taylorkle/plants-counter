@@ -29,14 +29,18 @@ const SearchBar = props => {
     }
   }
 
-  let validSearch = false
-  if (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/)) {
-    validSearch = true
+  const validSearch = () => {
+    if (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/)) {
+      return true
+    } else {
+      return false
+    }
   }
 
   const handleSubmit = event => {
+    props.setPlantAdded(false)
     event.preventDefault()
-    if (validSearch) {
+    if (validSearch()) {
       props.setError("")
       fetchResult()
     } else {

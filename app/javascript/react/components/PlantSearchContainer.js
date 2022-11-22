@@ -4,7 +4,6 @@ import SearchBar from './SearchBar.js'
 import SearchResultTile from './SearchResultTile.js'
 import SuccessTile from './SuccessTile.js'
 
-
 const PlantSearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
     id: null,
@@ -18,21 +17,22 @@ const PlantSearchContainer = props => {
   if (searchResult.id) {
     searchResultDisplay =
     <SearchResultTile
-      searchResult = {searchResult}
-      setSearchResult = {setSearchResult}
-      setPlantAdded = {setPlantAdded}
-      setError = {setError}
+      searchResult={searchResult}
+      setSearchResult={setSearchResult}
+      setPlantAdded={setPlantAdded}
+      setError={setError}
     />
   } else if (plantAdded === true) {
-    searchResultDisplay = <SuccessTile />
+    searchResultDisplay = <SuccessTile/>
   }
 
   return (
-    <div>
+    <div className="search-page">
       <h1 className = "green-heading center-text">Which plant based foods have you eaten this week?</h1>
       <SearchBar
-        setSearchResult = {setSearchResult}
-        setError = {setError}
+        setSearchResult={setSearchResult}
+        setError={setError}
+        setPlantAdded={setPlantAdded}
       />
       {error}
       {searchResultDisplay}

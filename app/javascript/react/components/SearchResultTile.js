@@ -38,7 +38,7 @@ const SearchResultTile = props => {
   }
 
   return(
-    <div>
+    <div className="search-page">
       <h1>{props.searchResult.name}</h1>
       <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
       <form onClick={handleSubmit}>
