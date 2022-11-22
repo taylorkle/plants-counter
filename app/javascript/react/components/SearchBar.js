@@ -35,6 +35,7 @@ const SearchBar = props => {
   }
 
   const handleSubmit = event => {
+    props.setPlantAdded(false)
     event.preventDefault()
     if (validSearch) {
       props.setError("")

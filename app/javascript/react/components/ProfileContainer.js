@@ -19,15 +19,13 @@ const ProfileContainer = props => {
     }
   }
 
-
-
   useEffect(() => {
     fetchUser()
   }, [])
 
   return(
     <div>
-      <h1>{user.first_name}'s Plant Intake </h1>
+      <h1>{userData.first_name}'s Plant Intake </h1>
     </div>
   )
 }
