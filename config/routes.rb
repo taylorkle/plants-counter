@@ -4,22 +4,12 @@ Rails.application.routes.draw do
 
   get "/home", to: "homes#index"
   get "/users/:id", to:"homes#index"
-  get '/plants', to: 'homes#athenticate'
-
-  namespace :api do
-    namespace :v1 do
-      resources :users, only: [:index, :show]
-    end
-  end
+  get '/plants', to: 'homes#authenticate'
 
   namespace :api do
     namespace :v1 do
       post '/spoonacular/search', to:'spoonacular#search'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
+      resources :users, only: [:index, :show]
       resources :plants, only: [:create]
     end
   end

@@ -17,13 +17,13 @@ const PlantSearchContainer = props => {
   if (searchResult.id) {
     searchResultDisplay =
     <SearchResultTile
-      searchResult = {searchResult}
-      setSearchResult = {setSearchResult}
-      setPlantAdded = {setPlantAdded}
-      setError = {setError}
+      searchResult={searchResult}
+      setSearchResult={setSearchResult}
+      setPlantAdded={setPlantAdded}
+      setError={setError}
     />
   } else if (plantAdded === true) {
-    searchResultDisplay = <SuccessTile />
+    searchResultDisplay = <SuccessTile/>
   }
 
   return (

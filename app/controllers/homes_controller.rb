@@ -1,10 +1,10 @@
 class HomesController < ApplicationController
-  before_action :authenticate_user!, only: [:athenticate]
+  before_action :authenticate_user!, only: [:authenticate]
 
   def index
   end
 
-  def athenticate
+  def authenticate
   end
 
 end
