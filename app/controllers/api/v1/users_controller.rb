@@ -5,8 +5,8 @@ class Api::V1::UsersController < ApiController
       user = User.find(params[:id])
       plants = user.plants
       current_date = Date.today
-      week_start = current_date.at_beginning_of_week
-      week_end = current_date.at_end_of_week
+      week_start = current_date.at_beginning_of_week(:sunday)
+      week_end = current_date.at_end_of_week(:saturday)
 
       current_plants = []
       plants.each do |plant|

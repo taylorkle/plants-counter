@@ -31,8 +31,9 @@ class Api::V1::PlantsController < ApiController
   def index
     plants = current_user.plants
     current_date = Date.today
-    week_start = current_date.at_beginning_of_week
-    week_end = current_date.at_end_of_week
+    week_start = current_date.at_beginning_of_week(:sunday)
+    week_end = current_date.at_end_of_week(:saturday)
+    binding.pry
 
     current_plants = []
     plants.each do |plant|

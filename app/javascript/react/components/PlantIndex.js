@@ -36,7 +36,7 @@ const PlantIndex = props => {
 
   let displayPlants = null
   if (plantData.length !== 0) {
-    displayPlants = <h2>Your current plants</h2>
+    displayPlants = <h2>Current plants</h2>
   }
 
   return(
