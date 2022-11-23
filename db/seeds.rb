@@ -1,3 +1,9 @@
+mike = User.find_by(email: "mike@gmail.com")
+amy = User.find_by(email: "amy@gmail.com")
+
+mike.plant_entries.destroy_all
+amy.plant_entries.destroy_all
+
 User.delete_all
 
 user_1 = User.create!(first_name: "Mike", email: "Mike@gmail.com", password: "foodie2", plant_goal: 25)

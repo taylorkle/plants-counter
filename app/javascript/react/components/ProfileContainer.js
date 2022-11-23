@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react"
+import PlantIndex from "./PlantIndex.js"
 
 const ProfileContainer = props => {
-  const [user, setUser] = useState({})
+  const [userData, setUser] = useState({
+    firstName: "",
+    plantGoal: null,
+    plantNumber: null,
+  })
 
   const fetchUser = async () => {
     try {
@@ -11,8 +16,12 @@ const ProfileContainer = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      let userData = responseBody.user
-      setUser(userData)
+      let user = responseBody.user
+      setUser({
+        firstName: user.first_name,
+        plantGoal: user.plant_goal,
+        plantNumber: user.plant_number
+      })
     }
     catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
@@ -23,9 +32,16 @@ const ProfileContainer = props => {
     fetchUser()
   }, [])
 
+  const currentDay = new Date
+  const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
+  const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
+  const currentWeek = `${firstDay.toDateString()} - ${lastDay.toDateString()}`
+
   return(
-    <div>
-      <h1>{user.first_name}'s Plant Intake </h1>
+    <div className="profile-page">
+      <h1>{currentWeek}</h1>
+      <h2>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h2>
+      <PlantIndex/>
     </div>
   )
 }
