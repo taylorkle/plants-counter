@@ -3,7 +3,19 @@ class Api::V1::UsersController < ApiController
   def show
     if User.find(params[:id])
       user = User.find(params[:id])
-      plant_number = user.plants.length
+      plants = user.plants
+      current_date = Date.today
+      week_start = current_date.at_beginning_of_week
+      week_end = current_date.at_end_of_week
+
+      current_plants = []
+      plants.each do |plant|
+        if plant["created_at"] > week_start && plant["created_at"] < week_end
+          current_plants << plant
+        end
+      end
+
+      plant_number = current_plants.length
       render json: { user: {first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
     end
   end
