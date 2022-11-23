@@ -1,3 +1,4 @@
+
 .produce-background {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.4),
@@ -10,10 +11,13 @@
 .about.callout {
   background-color: white;
   text-align: center;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.green-heading {
-  color: #72A26D;
+.heading-text {
+  color: #d8cf06;
 }
 
 .center-text {
@@ -21,16 +25,23 @@
 }
 
 button {
-  background-color: #EEF539;
+  background-color: #f7ef47;
   padding: 1rem;
 }
 
 li {
   list-style: none;
+  background-color: white;
 }
 
 a {
   color: black;
+}
+
+.top-bar {
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .top-bar-section {
@@ -39,11 +50,13 @@ a {
   text-align: right;
 }
 
+ul {
+  background-color: white;
+}
+
 .search {
   margin: 60px;
 }
-
-
 
 .search-page {
   margin: 30px;
@@ -57,7 +70,7 @@ a {
   margin: 20px;
 }
 
-
 .plant-display {
   display: block;
 }
+
