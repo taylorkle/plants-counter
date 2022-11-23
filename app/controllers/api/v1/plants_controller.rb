@@ -29,6 +29,9 @@ class Api::V1::PlantsController < ApiController
   end
 
   def index
+    # if curent user is nil
+    # render json error message
+    # else
     plants = current_user.plants
     render json: { plants: plants }
   end
