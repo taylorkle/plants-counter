@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/home", to: "homes#index"
-  get "/users/:id", to:"homes#index"
+  get "/users/:id", to:"homes#authorize"
   get '/plants', to: 'homes#authenticate'
 
   namespace :api do
