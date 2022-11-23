@@ -30,7 +30,18 @@ class Api::V1::PlantsController < ApiController
 
   def index
     plants = current_user.plants
-    render json: { plants: plants }
+    current_date = Date.today
+    week_start = current_date.at_beginning_of_week(:sunday)
+    week_end = current_date.at_end_of_week(:sunday)
+
+    current_plants = []
+    plants.each do |plant|
+      if plant["created_at"] > week_start && plant["created_at"] < week_end
+        current_plants << plant
+      end
+    end
+
+    render json: { plants: current_plants }
   end
 
   private

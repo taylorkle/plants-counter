@@ -32,9 +32,15 @@ const ProfileContainer = props => {
     fetchUser()
   }, [])
 
+  const currentDay = new Date
+  const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
+  const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
+  const currentWeek = `${firstDay.toDateString()} - ${lastDay.toDateString()}`
+
   return(
     <div className="profile-page">
-      <h1>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h1>
+      <h1>{currentWeek}</h1>
+      <h2>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h2>
       <PlantIndex/>
     </div>
   )
