@@ -28,6 +28,11 @@ class Api::V1::PlantsController < ApiController
     end
   end
 
+  def index
+    plants = current_user.plants
+    render json: { plants: plants }
+  end
+
   private
   def plant_params
     params.require(:plantData).permit(:id, :name, :image)
