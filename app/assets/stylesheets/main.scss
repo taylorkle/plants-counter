@@ -16,17 +16,28 @@
   margin-right: auto;
 }
 
-.heading-text {
+#nav-heading {
   color: #d8cf06;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.secondary-text {       //not sure this is necessary
+  color: black;
+  font-weight: normal;
+  font-size: 20px;
 }
 
 .center-text {
   text-align: center;
 }
 
-button {
+.button {
   background-color: #f7ef47;
   padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 li {
