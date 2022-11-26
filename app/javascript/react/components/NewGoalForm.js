@@ -5,8 +5,8 @@ const NewGoalForm = props => {
 
   const postGoal = async () => {
     try {
-      const response = await fetch(`/api/v1/users/${props.userId}/edit`, {
-        method: "POST",
+      const response = await fetch(`/api/v1/users/${props.userId}`, {
+        method: "PUT",
         credentials: "same-origin",
         body: JSON.stringify({
           goal: newGoal
@@ -28,9 +28,21 @@ const NewGoalForm = props => {
     }
   }
 
+  const validForm = () => {
+    if (newGoal.trim() !== "" && newGoal.match(/^([0-9]?)+$/) && newGoal !== "0") {   //maybe convert to int
+      return true
+    } else {
+      return false
+    }
+  }
   const handleSubmit = (event) => {
     event.preventDefault()
-    postGoal()
+    if (validForm()) {
+      postGoal()
+      setNewGoal("")
+    } else {
+      console.log("error")
+    }
   }
 
   const handleChange = (event) => {
@@ -39,8 +51,8 @@ const NewGoalForm = props => {
 
   return(
     <div>
-      <form onClick={handleSubmit}>
-        <input type="text" name="goal" value={newGoal} onChange={handleChange}/>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="goal" onChange={handleChange} value={newGoal}/>
         <input type="submit" value="Set Goal"/>
       </form>
     </div>

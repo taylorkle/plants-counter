@@ -43,10 +43,10 @@ const SearchBar = props => {
     if (validSearch()) {
       props.setError("")
       fetchResult()
+      setSearchString("")
     } else {
       props.setError("Not a valid search")
     }
-    setSearchString("")
   }
 
   const handleChange = event => {

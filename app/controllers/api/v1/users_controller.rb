@@ -28,9 +28,11 @@ class Api::V1::UsersController < ApiController
     end
   end
 
-  def edit
-    binding.pry
-    current_user["plant_goal"] = params[]
+  def update
+
+    current_user["plant_goal"] = params["goal"].to_i
+
+    render json: { goal: current_user["plant_goal"] }
 
   end
 end

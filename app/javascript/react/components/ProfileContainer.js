@@ -54,10 +54,18 @@ const ProfileContainer = props => {
     />
   }
 
+  let goalDisplay = null
+  if (goal) {
+    goalDisplay = goal
+  } else {
+    goalDisplay = userData.plantGoal
+  }
+
   return(
     <div className="profile-page">
       <h1>{currentWeek}</h1>
       <h2>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h2>
+      <h2>{userData.firstName}'s Intake Goal: {goalDisplay}</h2>
       <PlantIndex/>
       {formDisplay}
     </div>
