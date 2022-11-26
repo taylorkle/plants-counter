@@ -43,10 +43,10 @@ const SearchBar = props => {
     if (validSearch()) {
       props.setError("")
       fetchResult()
+      setSearchString("")
     } else {
       props.setError("Not a valid search")
     }
-    setSearchString("")
   }
 
   const handleChange = event => {
@@ -55,9 +55,8 @@ const SearchBar = props => {
 
   return(
     <form onSubmit={handleSubmit} className="search">
-      <label>Search</label>
-      <input type ="text" name="searchString" value={searchString} onChange={handleChange}/>
-     <button className="button" type="submit" value="Submit">Submit</button>
+      <input type ="text" name="searchString" value={searchString} onChange={handleChange} placeholder="Search food item with exact spelling, i.e. 'apple'"/>
+     <button className="button" type="submit" value="Search">Submit</button>
     </form>
   )
 }

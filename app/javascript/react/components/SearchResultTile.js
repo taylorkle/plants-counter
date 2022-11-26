@@ -13,21 +13,21 @@ const SearchResultTile = props => {
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
+        }
+      })
+      const responseBody = await response.json()
+      props.setSearchResult({
+        id: null,
+        name: "",
+        image: ""
+      })
+      if (!response.ok) {
+        props.setError(responseBody.error)
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
       }
-    })
-    const responseBody = await response.json()
-    props.setSearchResult({
-      id: null,
-      name: "",
-      image: ""
-    })
-    if (!response.ok) {
-      props.setError(responseBody.error)
-      const errorMessage = `${response.status} (${response.statusText})`
-      throw new Error(errorMessage)
-    }
-    props.setPlantAdded(true)
-  } catch(error) {
+      props.setPlantAdded(true)
+    } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
