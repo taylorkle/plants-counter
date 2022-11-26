@@ -39,10 +39,9 @@ const SearchResultTile = props => {
 
   return(
     <div className="search-page">
-      <h1>{props.searchResult.name}</h1>
-      <img src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
-      <form onClick={handleSubmit}>
-        <input type="submit" value="+ Add Plant"/>
+      <img className="plant-display" src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
+      <form onClick={handleSubmit} className="add-plant-form">
+        <button className="button add-plant" type="submit">+ Add {props.searchResult.name}</button>
       </form>
     </div>
   )

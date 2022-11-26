@@ -4,7 +4,7 @@ import SearchBar from './SearchBar.js'
 import SearchResultTile from './SearchResultTile.js'
 import SuccessTile from './SuccessTile.js'
 
-const PlantSearchContainer = props => {
+const SearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
     id: null,
     name: "",
@@ -40,4 +40,4 @@ const PlantSearchContainer = props => {
   )
 }
 
-export default PlantSearchContainer
+export default SearchContainer

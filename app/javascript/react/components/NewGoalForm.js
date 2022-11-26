@@ -57,7 +57,7 @@ const NewGoalForm = props => {
       {error}
       <form onSubmit={handleSubmit}>
         <input type="text" name="goal" onChange={handleChange} value={newGoal} placeholder="Enter whole number greater than 0"/>
-        <input type="submit" value="Set Goal"/>
+        <button className="button" type="submit">Set New Goal</button>
       </form>
     </div>
   )

@@ -46,7 +46,7 @@ const ProfileContainer = props => {
     setShowForm(true)
   }
 
-  let formDisplay = <button onClick={handleClick} type="submit">Set New Goal</button>
+  let formDisplay = <button className="button" onClick={handleClick} type="submit">Set New Goal</button>
   if (showForm) {
     formDisplay= <NewGoalForm
       setGoal={setGoal}
