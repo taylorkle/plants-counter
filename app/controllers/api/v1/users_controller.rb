@@ -29,10 +29,18 @@ class Api::V1::UsersController < ApiController
   end
 
   def update
-
-    current_user["plant_goal"] = params["goal"].to_i
-
-    render json: { goal: current_user["plant_goal"] }
+    if current_user.update(plant_goal: new_goal_params.to_i)
+      render json: { goal: current_user["plant_goal"] }
+    else
+      render json: { error: current_user.errors.full_messages.to_sentence },
+      status: 400
+    end
 
   end
+
+  private
+  def new_goal_params
+    params.require(:goal)
+  end
+
 end
