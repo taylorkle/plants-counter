@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react"
 import PlantIndex from "./PlantIndex.js"
+import NewGoalForm from "./NewGoalForm.js"
 
 const ProfileContainer = props => {
   const [userData, setUser] = useState({
+    id: null,
     firstName: "",
     plantGoal: null,
     plantNumber: null,
   })
+  const [showForm, setShowForm] = useState(false)
+  const [goal, setGoal] = useState(null)
 
   const fetchUser = async () => {
     try {
@@ -18,6 +22,7 @@ const ProfileContainer = props => {
       const responseBody = await response.json()
       let user = responseBody.user
       setUser({
+        id: user.id,
         firstName: user.first_name,
         plantGoal: user.plant_goal,
         plantNumber: user.plant_number
@@ -37,11 +42,24 @@ const ProfileContainer = props => {
   const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
   const currentWeek = `${firstDay.toDateString()} - ${lastDay.toDateString()}`
 
+  const handleClick = (event) => {
+    setShowForm(true)
+  }
+
+  let formDisplay = <button onClick={handleClick} type="submit">Set New Goal</button>
+  if (showForm) {
+    formDisplay= <NewGoalForm
+      setGoal={setGoal}
+      userId={userData.id}
+    />
+  }
+
   return(
     <div className="profile-page">
       <h1>{currentWeek}</h1>
       <h2>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h2>
       <PlantIndex/>
+      {formDisplay}
     </div>
   )
 }

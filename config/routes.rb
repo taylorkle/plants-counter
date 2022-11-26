@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/spoonacular/search', to:'spoonacular#search'
-      resources :users, only: [:index, :show]
+      resources :users, only: [:index, :show, :edit]
       resources :plants, only: [:create, :index]
     end
   end

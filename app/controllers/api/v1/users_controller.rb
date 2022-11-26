@@ -16,15 +16,21 @@ class Api::V1::UsersController < ApiController
       end
 
       plant_number = current_plants.length
-      render json: { user: {first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
+      render json: { user: {id: user.id, first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
     end
   end
 
   def index
-      if !current_user.nil?
-        render json: { user: {email: current_user.email, id: current_user.id} }
-      else
-        render json: { errorStatus: true, error: "User not logged in" }
-      end
+    if !current_user.nil?
+      render json: { user: {email: current_user.email, id: current_user.id} }
+    else
+      render json: { errorStatus: true, error: "User not logged in" }
+    end
+  end
+
+  def edit
+    binding.pry
+    current_user["plant_goal"] = params[]
+
   end
 end
