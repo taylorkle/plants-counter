@@ -29,15 +29,15 @@ class Api::V1::PlantsController < ApiController
   end
 
   def index
-    plants = current_user.plants
+    plant_entries = current_user.plant_entries
     current_date = Date.today
-    week_start = current_date.at_beginning_of_week(:sunday)
-    week_end = current_date.at_end_of_week(:sunday)
+    week_start = current_date.at_beginning_of_week(:sunday).beginning_of_day
+    week_end = current_date.at_end_of_week(:sunday).end_of_day
 
     current_plants = []
-    plants.each do |plant|
-      if plant["created_at"] > week_start && plant["created_at"] < week_end
-        current_plants << plant
+    plant_entries.each do |entry|
+      if entry["created_at"] >= week_start && entry["created_at"] <= week_end
+        current_plants << entry.plant
       end
     end
 
