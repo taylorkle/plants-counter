@@ -3,50 +3,9 @@
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.4),
     rgba(255, 255, 255, 0.4)
-  ), url("https://ryecollc.com/wp-content/uploads/2018/11/fruit_lineup.jpg");
+  ), url("produce.jpg");
   background-position: center;
   height: 800px;
-}
-
-.about.callout {
-  background-color: white;
-  text-align: center;
-  border: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#nav-heading {
-  color: #d8cf06;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.secondary-text {       //not sure this is necessary
-  color: black;
-  font-weight: normal;
-  font-size: 20px;
-}
-
-.center-text {
-  text-align: center;
-}
-
-.button {
-  background-color: #f7ef47;
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-li {
-  list-style: none;
-  background-color: white;
-}
-
-a {
-  color: black;
 }
 
 .top-bar {
@@ -59,6 +18,55 @@ a {
   margin-left: auto;
   margin-right: right;
   text-align: right;
+}
+
+#nav-heading {
+  color: #d8cf06;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.about.callout {
+  background-color: white;
+  text-align: center;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 90px;
+  border-radius: 10px;
+}
+
+.grid-container {
+  margin: 20px 0px;
+  padding: 0px;
+}
+
+h1 {
+  color: black;
+  font-size: 30px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.button {
+  background-color: #f7ef47;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: black;
+}
+
+li {
+  list-style: none;
+  background-color: white;
+}
+
+a {
+  color: black;
 }
 
 ul {
@@ -83,5 +91,11 @@ ul {
 
 .plant-display {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plant-tile {
+  display: inline-block;
 }
 

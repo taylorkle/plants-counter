@@ -28,7 +28,7 @@ const PlantSearchContainer = props => {
 
   return (
     <div className="search-page">
-      <h1 className = "center-text">Which plant based foods have you eaten this week?</h1>
+      <h1 className="center-text">Which plant based foods have you eaten this week?</h1>
       <SearchBar
         setSearchResult={setSearchResult}
         setError={setError}

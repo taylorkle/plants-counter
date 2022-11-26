@@ -57,7 +57,7 @@ const SearchBar = props => {
     <form onSubmit={handleSubmit} className="search">
       <label>Search</label>
       <input type ="text" name="searchString" value={searchString} onChange={handleChange}/>
-      <input className="submit" type="submit" value="Submit" />
+     <button className="button" type="submit" value="Submit">Submit</button>
     </form>
   )
 }

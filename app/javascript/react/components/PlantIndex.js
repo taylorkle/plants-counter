@@ -40,13 +40,9 @@ const PlantIndex = props => {
   }
 
   return(
-    <div className="grid-container">
-      <div className="grid-x">
-        <div className="cell small-10, medium-4, large-4">
-          {displayPlants}
-          {plantTiles}
-        </div>
-      </div>
+    <div>
+      {displayPlants}
+      {plantTiles}
     </div>
   )
 }
