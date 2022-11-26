@@ -66,8 +66,8 @@ const ProfileContainer = props => {
       <h1>{currentWeek}</h1>
       <h2>{userData.firstName}'s Plant Intake: {userData.plantNumber} plants </h2>
       <h2>{userData.firstName}'s Intake Goal: {goalDisplay}</h2>
-      <PlantIndex/>
       {formDisplay}
+      <PlantIndex/>
     </div>
   )
 }
