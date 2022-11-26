@@ -13,7 +13,11 @@ class Api::V1::PlantsController < ApiController
       plant = Plant.find_by(name: plant_params["name"])
     end
 
-    if plant && PlantEntry.where(user: user, plant: plant).empty?
+    current_date = Date.today
+    week_start = current_date.at_beginning_of_week(:sunday).beginning_of_day
+    latest_plant_entry = PlantEntry.where(user: user, plant: plant).order(:created_at).last
+
+    if plant && latest_plant_entry["created_at"] < week_start
       plant_entry = PlantEntry.new(plant: plant, user: user)
     else
       render json: { error_status: true, error: "Plant already added" }, status: 400
