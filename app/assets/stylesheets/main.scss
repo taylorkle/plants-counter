@@ -1,49 +1,105 @@
+
 .produce-background {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.4),
     rgba(255, 255, 255, 0.4)
-  ), url("https://cdn1.sph.harvard.edu/wp-content/uploads/sites/21/2018/07/fruitveg.jpeg");
+  ), url("produce.jpg");
   background-position: center;
   height: 800px;
 }
 
-.about.callout {
-  opacity: 0.8;
-  background-color: #B5CEB2;
-  text-align: center;
-  margin: auto;
+.flash {
+  margin: 0px 20px;
 }
 
-.green-heading {
-  color: #72A26D;
-}
-
-.center-text {
-  text-align: center;
-}
-
-button {
-  background-color: #EEF539;
-  padding: 1rem;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: black;
+.top-bar {
+  background-color: #fefefe;
+  margin-left: 20px;
 }
 
 .top-bar-section {
   margin-left: auto;
   margin-right: right;
   text-align: right;
+  font-size: 14px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-decoration: underline;
 }
 
-.top-bar {
-  background-image: url("https://cdn1.sph.harvard.edu/wp-content/uploads/sites/21/2018/07/fruitveg.jpeg");
-  opacity: 0.7;
+a {
+  color: black;
+  margin: 20px;
+}
+
+li {
+  list-style: none;
+  background-color: #fefefe;
+}
+
+a:hover {
+   color: #D8CF04;
+   font-weight: bold;
+}
+
+#nav-heading {
+  color: #d8cf06;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.about.callout {
+  background-color: #fefefe;
+  text-align: center;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 130px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 20px 35px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  font-size: 25px;
+  margin: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.button {
+  background-color: #f4ea00;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: black;
+  margin: 15px 10px;
+}
+
+.button:focus {
+  background-color: #f4ea00;
+  color: black;
+}
+
+.button:hover a{
+  color: black;
+}
+
+.button:hover {
+  background-color: #D8CF04;
+  color: black;
+}
+
+ul {
+  background-color: #fefefe;
+  margin-top: 10px;
 }
 
 .search-page {
@@ -51,14 +107,59 @@ a {
 }
 
 .search {
-  margin: 60px;
+  margin: 40px;
+  text-align: center;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.search-bar {
+  width: 75%;
+}
+
+.add-plant-form {
+  text-align: center;
+}
+
+.add-plant-button {
+  width: 60%;
 }
 
 .profile-page {
   margin: 20px;
 }
 
-
 .plant-display {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.plant-tile {
+  display: inline-block;
+  margin: 20px 10px;
+}
+
+.grid-margin-x {
+  margin-left: 20px;
+}
+
+.goal-section {
+  text-align: center;
+}
+
+.goal-section h2{
+  margin: 20px 10px;
+}
+
+.field {
+  margin: 20px;
+}
+
+.actions input {
+  margin: 20px;
+}
+
+

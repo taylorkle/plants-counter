@@ -55,8 +55,8 @@ const SearchBar = props => {
 
   return(
     <form onSubmit={handleSubmit} className="search">
-      <input type ="text" name="searchString" value={searchString} onChange={handleChange} placeholder="Search food item with exact spelling, i.e. 'apple'"/>
-      <input className="submit" type="submit" value="Search" />
+      <input className="inline search-bar" type ="text" name="searchString" value={searchString} onChange={handleChange} placeholder="Search food item with exact spelling, i.e. 'apple'"/>
+      <button className="inline button" type="submit">Search</button>
     </form>
   )
 }

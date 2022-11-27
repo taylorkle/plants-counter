@@ -36,17 +36,15 @@ const PlantIndex = props => {
 
   let displayPlants = null
   if (plantData.length !== 0) {
-    displayPlants = <h2>Current plants</h2>
+    displayPlants = <h2>Plants Consumed this Week</h2>
   }
 
   return(
-    <div className="grid-container">
-      <div className="grid-x">
-        <div className="cell small-10, medium-4, large-4">
-          {displayPlants}
+    <div>
+      {displayPlants}
+        <div className="grid-x">
           {plantTiles}
         </div>
-      </div>
     </div>
   )
 }
