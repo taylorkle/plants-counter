@@ -8,23 +8,39 @@
   height: 800px;
 }
 
+.flash {
+  margin: 0px 20px;
+}
+
 .top-bar {
   background-color: #fefefe;
   margin-left: 20px;
-  margin-right: 20px;
 }
 
 .top-bar-section {
   margin-left: auto;
   margin-right: right;
   text-align: right;
+  font-size: 14px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+a {
+  color: black;
+  margin: 20px;
+}
+
+a:hover {
+   color: #D8CF04;
+   font-weight: bold;
 }
 
 #nav-heading {
   color: #d8cf06;
   font-size: 3rem;
   font-weight: bold;
-  margin-left: 10px;
+  margin: 5px;
 }
 
 .about.callout {
@@ -33,18 +49,14 @@
   border: none;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 90px;
+  margin-top: 130px;
   border-radius: 10px;
-}
-
-.grid-container {
-  margin: 20px 0px;
-  padding: 0px;
 }
 
 h1 {
   font-size: 30px;
-  margin: 10px 30px;
+  margin: 20px 35px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h2 {
@@ -63,7 +75,7 @@ h2 {
   font-size: 0.8rem;
   font-weight: bold;
   color: black;
-  margin: 10px;
+  margin: 15px 10px;
 }
 
 li {
@@ -71,12 +83,28 @@ li {
   background-color: #fefefe;
 }
 
-a {
+.button:hover a{
   color: black;
 }
 
+.button:hover {
+  background-color: #D8CF04;
+  color: black;
+}
+
+.button:active a {
+  color: black;
+}
+
+.button:active {
+  background-color: #D8CF04;
+  color: black;
+}
+
+
 ul {
   background-color: #fefefe;
+  margin-top: 10px;
 }
 
 .search-page {
@@ -129,5 +157,13 @@ ul {
 
 .goal-section h2{
   margin: 20px 10px;
+}
+
+.field {
+  margin: 20px;
+}
+
+.actions input {
+  margin: 20px;
 }
 
