@@ -43,6 +43,7 @@ const NewGoalForm = props => {
       postGoal()
       setNewGoal("")
       setError("")
+      props.setShowForm(false)
     } else {
       setError("Must be a whole number greater than 0")
     }

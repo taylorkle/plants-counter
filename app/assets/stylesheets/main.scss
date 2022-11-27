@@ -9,7 +9,7 @@
 }
 
 .top-bar {
-  background-color: white;
+  background-color: #fefefe;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -28,7 +28,7 @@
 }
 
 .about.callout {
-  background-color: white;
+  background-color: #fefefe;
   text-align: center;
   border: none;
   margin-left: auto;
@@ -43,8 +43,13 @@
 }
 
 h1 {
-  color: black;
   font-size: 30px;
+  margin: 10px 30px;
+}
+
+h2 {
+  font-size: 25px;
+  margin: 20px;
 }
 
 .center-text {
@@ -52,7 +57,7 @@ h1 {
 }
 
 .button {
-  background-color: #f7ef47;
+  background-color: #f4ea00;
   padding: 0.8rem;
   border-radius: 10px;
   font-size: 0.8rem;
@@ -63,7 +68,7 @@ h1 {
 
 li {
   list-style: none;
-  background-color: white;
+  background-color: #fefefe;
 }
 
 a {
@@ -71,7 +76,7 @@ a {
 }
 
 ul {
-  background-color: white;
+  background-color: #fefefe;
 }
 
 .search-page {
@@ -111,5 +116,18 @@ ul {
 
 .plant-tile {
   display: inline-block;
+  margin: 20px 0px;
+}
+
+.grid-margin-x {
+  margin:20px
+}
+
+.goal-section {
+  text-align: center;
+}
+
+.goal-section h2{
+  margin: 20px 10px;
 }
 
