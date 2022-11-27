@@ -31,6 +31,11 @@ a {
   margin: 20px;
 }
 
+li {
+  list-style: none;
+  background-color: #fefefe;
+}
+
 a:hover {
    color: #D8CF04;
    font-weight: bold;
@@ -78,9 +83,9 @@ h2 {
   margin: 15px 10px;
 }
 
-li {
-  list-style: none;
-  background-color: #fefefe;
+.button:focus {
+  background-color: #f4ea00;
+  color: black;
 }
 
 .button:hover a{
@@ -91,16 +96,6 @@ li {
   background-color: #D8CF04;
   color: black;
 }
-
-.button:active a {
-  color: black;
-}
-
-.button:active {
-  background-color: #D8CF04;
-  color: black;
-}
-
 
 ul {
   background-color: #fefefe;
@@ -144,11 +139,11 @@ ul {
 
 .plant-tile {
   display: inline-block;
-  margin: 20px 0px;
+  margin: 20px 10px;
 }
 
 .grid-margin-x {
-  margin:20px
+  margin-left: 20px;
 }
 
 .goal-section {
@@ -166,4 +161,5 @@ ul {
 .actions input {
   margin: 20px;
 }
+
 
