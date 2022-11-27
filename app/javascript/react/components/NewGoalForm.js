@@ -6,7 +6,7 @@ const NewGoalForm = props => {
 
   const postGoal = async () => {
     try {
-      const response = await fetch(`/api/v1/users/${props.userId}`, {
+      const response = await fetch(`/api/v1/users/${props.userData.id}`, {
         method: "PATCH",
         credentials: "same-origin",
         body: JSON.stringify({
@@ -23,7 +23,10 @@ const NewGoalForm = props => {
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
-      props.setGoal(responseBody.goal)
+      props.setUserData({
+        ...props.userData,
+        plantGoal: responseBody.goal,
+      })
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
