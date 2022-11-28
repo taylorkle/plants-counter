@@ -36,7 +36,7 @@ const Homepage = props => {
     <div className="produce-background grid-container">
       <div className="grid-x">
         <div className="about callout small-10 medium-8 large-6">
-          <p>Count Your Plants!</p>
+          <h2>Count Your Plants!</h2>
           <p>Based on a landmark study, consuming 30 types of plant foods weekly leads to greater diversity of gut microbes which in turn leads to improved overall health.</p>
           {button}
         </div>
