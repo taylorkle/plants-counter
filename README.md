@@ -26,6 +26,12 @@
 1. Navigate to https://spoonacular.com/food-api/console#Dashboard to create account and select plan
 2. Assign constant variable 'SPOONACULAR_API_KEY' with personal spoonacular key in a .env file in the main directory
 
+## Instructions to view deployed site with seeded data
+1. Navigate to https://plants-counter.onrender.com/
+2. Log in as test user:
+  -Email: Amy@gmail.com
+  -Password: plants2
+
 ## TODO
 - Add delete plant feature
 - Edit ruby date and time objects to reflect local time instead of UTC time
