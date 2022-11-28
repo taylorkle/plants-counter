@@ -29,6 +29,7 @@ const SearchContainer = props => {
   return (
     <div className="search-page">
       <h1 className="center-text">Which plant based foods have you eaten this week?</h1>
+      <p>Whole grains, fruits, vegetables, legumes, nuts, and seeds count towards weekly plant intake. Additionally, herbs and spices count 1/4 towards your plant intake.</p>
       <SearchBar
         setSearchResult={setSearchResult}
         setError={setError}

@@ -1,4 +1,3 @@
-
 .produce-background {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.4),
@@ -32,7 +31,7 @@ a {
 }
 
 li {
-  list-style: none;
+  list-style-type: none;
   background-color: #fefefe;
 }
 
@@ -65,8 +64,20 @@ h1 {
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 20px;
   margin: 20px;
+}
+
+.summary {
+  text-align: left;
+}
+
+.summary-text {
+  margin: 0px 30px 20px 30px;
+}
+
+span {
+  font-size: 25px;
 }
 
 .center-text {
@@ -104,6 +115,7 @@ ul {
 
 .search-page {
   margin: 30px;
+  text-align: center;
 }
 
 .search {
@@ -121,6 +133,7 @@ ul {
 
 .add-plant-form {
   text-align: center;
+  margin: 30px;
 }
 
 .add-plant-button {
@@ -162,4 +175,41 @@ ul {
   margin: 20px;
 }
 
+.progress-display {
+  margin: 90px auto;
+}
 
+.progress-bar-container {
+  margin: 30px auto;
+}
+
+.progress-bar-outer {
+  width: 85%;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #B5CEB2;
+  margin: 0px auto;
+}
+
+.progress-bar-inner {
+  background-color: #64915F;
+  height: 100%;
+  box-sizing: content-box;
+  border-radius: 10px;
+}
+
+.progress-percentage {
+  font-size: 12px;
+  text-align: right;
+  padding: 5px 10px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.progress-message {
+  font-size: 8px;
+  text-align: left;
+  margin-left: 45px;
+  font-weight: bold;
+}
