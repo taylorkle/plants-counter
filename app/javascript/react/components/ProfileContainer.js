@@ -38,10 +38,6 @@ const ProfileContainer = props => {
     fetchUser()
   }, [])
 
-  const handleClick = (event) => {
-    setShowForm(true)
-  }
-
   const currentDay = new Date
   const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
   const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
@@ -49,9 +45,10 @@ const ProfileContainer = props => {
 
   let message = null
   let progressDisplay = null
+  let addButton = null
   if(userData.plantNumber === 0) {
     message = <span>Start adding plants to work towards your goal! </span>
-    progressDisplay = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
+    addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
   } else {
     message = <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
     progressDisplay =
@@ -59,6 +56,10 @@ const ProfileContainer = props => {
       plantGoal={userData.plantGoal}
       plantNumber={userData.plantNumber}
     />
+  }
+
+  const handleClick = (event) => {
+    setShowForm(true)
   }
 
   let formDisplay = <button className="button set-goal" onClick={handleClick} type="submit">Set New Goal</button>
@@ -82,6 +83,7 @@ const ProfileContainer = props => {
           </div>
           <div>
             {formDisplay}
+            {addButton}
           </div>
         </div>
         <div className="cell medium-6 large-6">
