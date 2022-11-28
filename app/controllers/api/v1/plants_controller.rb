@@ -1,3 +1,5 @@
+require_relative "../../../models/services/date_filter.rb"
+
 class Api::V1::PlantsController < ApiController
 
   def create
@@ -13,11 +15,8 @@ class Api::V1::PlantsController < ApiController
       plant = Plant.find_by(name: plant_params["name"])
     end
 
-    current_date = Date.today
-    week_start = current_date.at_beginning_of_week(:sunday).beginning_of_day
-    latest_plant_entry = PlantEntry.where(user: user, plant: plant).order(:created_at).last
-
-    if plant && (latest_plant_entry.nil? || latest_plant_entry["created_at"] < week_start)
+    last_plant_entry = PlantEntry.where(user: user, plant: plant).order(:created_at).last
+    if plant && DateFilter.not_duplicate?(last_plant_entry)
       plant_entry = PlantEntry.new(plant: plant, user: user)
     else
       render json: { error_status: true, error: "Plant already added" }, status: 400
@@ -34,17 +33,7 @@ class Api::V1::PlantsController < ApiController
 
   def index
     plant_entries = current_user.plant_entries
-    current_date = Date.today
-    week_start = current_date.at_beginning_of_week(:sunday).beginning_of_day
-    week_end = current_date.at_end_of_week(:sunday).end_of_day
-
-    current_plants = []
-    plant_entries.each do |entry|
-      if entry["created_at"] >= week_start && entry["created_at"] <= week_end
-        current_plants << entry.plant
-      end
-    end
-
+    current_plants = DateFilter.get_current_plants(plant_entries)
     render json: { plants: current_plants }
   end
 
@@ -52,6 +41,7 @@ class Api::V1::PlantsController < ApiController
   def plant_params
     params.require(:plantData).permit(:id, :name, :image)
   end
+
 end
 
 

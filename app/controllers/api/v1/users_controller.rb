@@ -1,21 +1,16 @@
+require_relative "../../../models/services/herb_counter.rb"
+require_relative "../../../models/services/date_filter.rb"
+
 class Api::V1::UsersController < ApiController
 
   def show
     if User.find(params[:id])
       user = User.find(params[:id])
       plant_entries = current_user.plant_entries
-      current_date = Date.today
-      week_start = current_date.at_beginning_of_week(:sunday).beginning_of_day
-      week_end = current_date.at_end_of_week(:sunday).end_of_day
+      current_plants = DateFilter.get_current_plants(plant_entries)
+      herb_count = HerbCounter.count(current_plants)
+      plant_number = (current_plants.length + herb_count * 0.25).to_f
 
-      current_plants = []
-      plant_entries.each do |entry|
-        if entry["created_at"] >= week_start && entry["created_at"] <= week_end
-          current_plants << entry.plant
-        end
-      end
-
-      plant_number = current_plants.length
       render json: { user: {id: user.id, first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
     end
   end
