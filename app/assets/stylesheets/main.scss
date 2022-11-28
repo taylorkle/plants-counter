@@ -1,26 +1,20 @@
-// html {
-//   height: 100%;
-// }
-// body {
-//   min-height: 100%;
-//   margin: 0;
-// }
+html {
+  height: 100%;
+}
+
 body {
   position: relative;
   min-height: 100vh;
-}
-
-.content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
+  margin: 0;
 }
 
 footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 2.5rem;            /* Footer height */
+  right: 0;
+  left: 0;
+  margin-bottom: 0px;
 }
-
 
 .produce-background {
   background-image: linear-gradient(
@@ -44,24 +38,23 @@ footer {
   margin-left: auto;
   margin-right: right;
   text-align: right;
-  font-size: 14px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-decoration: underline;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 a {
-  color: black;
+  color: #6E6E6E;
   margin: 20px;
+
+  &:hover {
+    color: #D8CF04;
+    font-weight: bold;
+  }
 }
 
 li {
-  list-style: none;
+  list-style-type: none;
   background-color: #fefefe;
-}
-
-a:hover {
-   color: #D8CF04;
-   font-weight: bold;
 }
 
 #nav-heading {
@@ -88,8 +81,20 @@ h1 {
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 20px;
   margin: 20px;
+}
+
+.summary {
+  text-align: left;
+}
+
+.summary-text {
+  margin: 0px 30px 20px 30px;
+}
+
+span {
+  font-size: 25px;
 }
 
 .center-text {
@@ -100,24 +105,30 @@ h2 {
   background-color: #f4ea00;
   padding: 0.8rem;
   border-radius: 10px;
-  font-size: 0.8rem;
+  font-size: 15px;
   font-weight: bold;
   color: black;
   margin: 15px 10px;
+
+  &:focus {
+    background-color: #f4ea00;
+  }
+
+  &:hover {
+    background-color: #D8CF04;
+  }
 }
 
-.button:focus {
-  background-color: #f4ea00;
+.button a {
   color: black;
-}
 
-.button:hover a{
-  color: black;
-}
+  &:focus {
+    color: black;        //now gray when hovering
+  }
 
-.button:hover {
-  background-color: #D8CF04;
-  color: black;
+  &:hover {
+    color: black;
+  }
 }
 
 ul {
@@ -127,6 +138,7 @@ ul {
 
 .search-page {
   margin: 30px;
+  text-align: center;
 }
 
 .search {
@@ -144,6 +156,7 @@ ul {
 
 .add-plant-form {
   text-align: center;
+  margin: 30px;
 }
 
 .add-plant-button {
@@ -157,7 +170,7 @@ ul {
 .plant-display {
   display: block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto
 }
 
 .plant-tile {
@@ -196,10 +209,49 @@ ul {
   font-style: bold;
 }
 
+.menu a:focus {
+  color: #6E6E6E;
+}
+
 .menu {
   background-color: #D8CF04;
 }
 
-footer {
- bottom: 0;
+.progress-display {
+  margin: 90px auto;
+}
+
+.progress-bar-container {
+  margin: 30px auto;
+}
+
+.progress-bar-outer {
+  width: 85%;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #B5CEB2;
+  margin: 0px auto;
+}
+
+.progress-bar-inner {
+  background-color: #64915F;
+  height: 100%;
+  box-sizing: content-box;
+  border-radius: 10px;
+}
+
+.progress-percentage {
+  font-size: 12px;
+  text-align: right;
+  padding: 5px 10px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.progress-message {
+  font-size: 8px;
+  text-align: left;
+  margin-left: 45px;
+  font-weight: bold;
 }
