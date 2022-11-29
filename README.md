@@ -33,9 +33,10 @@
   -Password: plants2
 
 ## TODO
+- Unit and controller tests
+- Serializers
 - Add delete plant feature
-- Edit ruby date and time objects to reflect local time instead of UTC time
-- Add plant intake and goal history
+- Add plant intake and goal history with data visualization
 - Add recipes feature
 
 ## Contributing
