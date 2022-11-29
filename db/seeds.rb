@@ -1,10 +1,15 @@
 mike = User.find_by(email: "mike@gmail.com")
 amy = User.find_by(email: "amy@gmail.com")
 
-mike.plant_entries.destroy_all
-amy.plant_entries.destroy_all
+if mike
+  mike.plant_entries.destroy_all
+  mike.delete
+end
 
-User.delete_all
+if amy
+  amy.plant_entries.destroy_all
+  amy.delete
+end
 
 user_1 = User.create!(first_name: "Mike", email: "Mike@gmail.com", password: "foodie2", plant_goal: 25)
 user_2 = User.create!(first_name: "Amy" , email: "Amy@gmail.com", password: "plants2", plant_goal: 20)
