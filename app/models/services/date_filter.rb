@@ -11,13 +11,13 @@ class DateFilter
   end
 
   def self.not_duplicate?(last_plant_entry)
-    last_plant_entry.nil? || utc_to_lcoal_time(last_plant_entry["created_at"]) < week_start
+    last_plant_entry.nil? || utc_to_local_time(last_plant_entry["created_at"]) < week_start
   end
 
   private
 
   def self.week_start
-    current_date_time = DateTime.now  #returns local time
+    current_date_time = DateTime.now
     return week_start = current_date_time.at_beginning_of_week(:sunday).beginning_of_day
   end
 
@@ -26,9 +26,9 @@ class DateFilter
     return week_end = current_date_time.at_end_of_week(:sunday).end_of_day
   end
 
-  def utc_to_local_time(created_at)
+  def self.utc_to_local_time(created_at)
     offset_hours = (Time.now.utc_offset / 60 / 60).hours
-    (created_at.to_time - offset_hours).to_datetime
+    (created_at.to_time + offset_hours).to_datetime
   end
 
 end
