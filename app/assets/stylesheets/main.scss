@@ -80,7 +80,7 @@ h1 {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-h2 {
+h2, .summary-text {
   font-size: 20px;
   margin: 20px;
 }
@@ -167,6 +167,10 @@ ul {
   margin: 20px;
 }
 
+.grid-x {
+  margin-top: 20px;
+}
+
 .plant-display {
   display: block;
   margin-left: auto;
@@ -176,10 +180,6 @@ ul {
 .plant-tile {
   display: inline-block;
   margin: 20px 10px;
-}
-
-.grid-margin-x {
-  margin-left: 20px;
 }
 
 .goal-section {
@@ -250,7 +250,7 @@ ul {
 }
 
 .progress-message {
-  font-size: 8px;
+  font-size: 12px;
   text-align: left;
   margin-left: 45px;
   font-weight: bold;
