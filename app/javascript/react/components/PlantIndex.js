@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import PlantTile from './PlantTile.js'
 
 const PlantIndex = props => {
@@ -35,13 +36,16 @@ const PlantIndex = props => {
   })
 
   let displayPlants = null
+  let addButton = null
   if (plantData.length !== 0) {
-    displayPlants = <h2>Plants Consumed this Week</h2>
+    displayPlants = <span className = "summary-text">Plants Consumed this Week</span>
+    addButton = <Link to="/plants"><button className="button" type="button">Add More</button></Link>
   }
 
   return(
     <div>
       {displayPlants}
+      {addButton}
         <div className="grid-x">
           {plantTiles}
         </div>
