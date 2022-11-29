@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
+import GetCurrentWeek from "./services/getCurrentWeek.js"
 import PlantIndex from "./PlantIndex.js"
 import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
+import getCurrentWeek from "./services/getCurrentWeek.js"
 
 const ProfileContainer = props => {
   const [userData, setUserData] = useState({
@@ -38,28 +40,22 @@ const ProfileContainer = props => {
     fetchUser()
   }, [])
 
-  const currentDay = new Date
-  const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
-  const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
-  const currentWeek = `${firstDay.toDateString()} - ${lastDay.toDateString()}`
-
-  let message = null
   let progressDisplay = null
+  let plantDisplay = null
   let addButton = null
   if(userData.plantNumber === 0) {
-    message = <span>Start adding plants to work towards your goal! </span>
+    progressDisplay = <span>Start adding plants to work towards your goal! </span>
     addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
   } else {
-    message = <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
     progressDisplay =
-    <ProgressBar
-      plantGoal={userData.plantGoal}
-      plantNumber={userData.plantNumber}
-    />
-  }
-
-  const handleClick = (event) => {
-    setShowForm(true)
+    <div>
+      <ProgressBar
+        plantGoal={userData.plantGoal}
+        plantNumber={userData.plantNumber}
+      />
+      <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
+    </div>
+    plantDisplay = <PlantIndex/>
   }
 
   let formDisplay = <button className="button set-goal" onClick={handleClick} type="submit">Set New Goal</button>
@@ -71,15 +67,21 @@ const ProfileContainer = props => {
     />
   }
 
+  const handleClick = (event) => {
+    setShowForm(true)
+  }
+
+  const currentWeek = getCurrentWeek()
+
   return(
     <div>
       <h1>{currentWeek}</h1>
       <div className="profile-page grid-x grid-margin-x">
-        <div className="cell medium-6 large-6 goal-section">
+        <div className="goal-section cell medium-6 large-6">
           <h2 className="summary">{userData.firstName}'s Plant Summary</h2>
           {progressDisplay}
           <div className="summary-text">
-            {message}<span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
+            <span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
           </div>
           <div>
             {formDisplay}
@@ -87,7 +89,7 @@ const ProfileContainer = props => {
           </div>
         </div>
         <div className="cell medium-6 large-6">
-          <PlantIndex/>
+          {plantDisplay}
         </div>
       </div>
     </div>
