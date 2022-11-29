@@ -1,24 +1,68 @@
-# README
+# Diversify
+ With the intent to encourage dietary diversity, Diversify allows users to track the plant based foods they consume and visualize how this compares to a personal goal.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby Version
+- Ruby 2.7.3
 
-Things you may want to cover:
+## System Dependencies
+- Rails 5.2.8.1
+- PostgreSQL 14.5
 
-* Ruby version
+## Instructions to Run Locally
 
-* System dependencies
+1. git clone https://github.com/taylorkle/plants-counter.git
+2. `cd plants-counter`
+3. `bundle install`
+4. `yarn install`
+5. `bundle exec rake db:create`
+6. `bundle exec rake db:migrate`
+7. `bundle exec rake db:seed`
+8. In a second terminal tab `bundle exec rails s`
+9. In a third terminal tab `yarn run start`
+10. Navigate to localhost/3000
+11. See "External API" to use the spoonacular API
 
-* Configuration
+## Spoonacular API
+1. Navigate to https://spoonacular.com/food-api/console#Dashboard to create account and select plan
+2. Assign constant variable 'SPOONACULAR_API_KEY' with personal spoonacular key in a .env file in the main directory
 
-* Database creation
+## Instructions to view deployed site with seeded data
+1. Navigate to https://plants-counter.onrender.com/
+2. Log in as test user:
+  -Email: Amy@gmail.com
+  -Password: plants2
 
-* Database initialization
+## TODO
+- Unit and controller tests
+- Serializers
+- Add delete plant feature
+- Add plant intake and goal history with data visualization
+- Add recipes feature
 
-* How to run the test suite
+## Contributing
+Pull requests are welcome. For major changes, please open an issue to discuss requested change further.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
+MIT License
 
-* Deployment instructions
+Copyright (c) [2022] [Taylor Le]
 
-* ...
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
