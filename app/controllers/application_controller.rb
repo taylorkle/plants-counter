@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :new_user_params, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    plants_path
+  end
+
   protected
 
     def new_user_params
