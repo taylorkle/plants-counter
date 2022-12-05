@@ -38,17 +38,17 @@ const PlantIndex = props => {
   let displayPlants = null
   let addButton = null
   if (plantData.length !== 0) {
-    displayPlants = <span className = "summary-text">Plants Consumed this Week</span>
-    addButton = <Link to="/plants"><button className="button" type="button">Add More</button></Link>
+    displayPlants = <h2 className="summary-heading">Plants Consumed this Week</h2>
+    addButton = <button className="button" type="button"><Link to="/plants">Add More</Link></button>
   }
 
   return(
     <div>
       {displayPlants}
-      {addButton}
         <div className="grid-x">
           {plantTiles}
         </div>
+        {addButton}
     </div>
   )
 }
