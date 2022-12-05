@@ -121,7 +121,19 @@ span {
   color: black;
 
   &:focus {
-    color: black;        //now gray when hovering
+    color: black;
+  }
+
+  &:hover {
+    color: black;
+  }
+}
+
+.menu a {
+  color: black;
+
+  &:focus {
+    color: black;
   }
 
   &:hover {
@@ -194,15 +206,6 @@ ul {
   font-weight: 400;
 }
 
-.menu a:hover {
-  color: black;
-  font-style: bold;
-}
-
-.menu a:focus {
-  color: #6E6E6E;
-}
-
 .menu {
   background-color: #D8CF04;
 }
@@ -252,4 +255,12 @@ ul {
 
 .plant-section {
   text-align: center;
+}
+
+a.plant-tile {
+  min-height: 130px;
+}
+
+.add {
+  font-size: 35px;
 }
