@@ -62,7 +62,7 @@ const ProfileContainer = props => {
     setShowForm(true)
   }
 
-  let formDisplay = <button className="button set-goal" onClick={handleClick} type="submit">Set New Goal</button>
+  let formDisplay = <button className="button" onClick={handleClick} type="submit">Set New Goal</button>
   if (showForm) {
     formDisplay= <NewGoalForm
       setUserData={setUserData}
@@ -76,7 +76,7 @@ const ProfileContainer = props => {
       <h1>{currentWeek}</h1>
       <div className="profile-page grid-x grid-margin-x">
         <div className="cell medium-6 large-6 goal-section">
-          <h2 className="summary">{userData.firstName}'s Plant Summary</h2>
+          <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
           {progressDisplay}
           <div className="summary-text">
             {message}<span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
@@ -86,7 +86,7 @@ const ProfileContainer = props => {
             {addButton}
           </div>
         </div>
-        <div className="cell medium-6 large-6">
+        <div className="cell medium-6 large-6 plant-section">
           <PlantIndex/>
         </div>
       </div>
