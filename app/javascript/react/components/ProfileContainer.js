@@ -74,7 +74,7 @@ const ProfileContainer = props => {
   return(
     <div>
       <h1>{currentWeek}</h1>
-      <div className="profile-page grid-x grid-margin-x">
+      <div className="profile-page grid-x">
         <div className="cell medium-6 large-6 goal-section">
           <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
           {progressDisplay}
