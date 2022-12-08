@@ -37,6 +37,16 @@ class Api::V1::PlantsController < ApiController
     render json: { plants: current_plants }
   end
 
+  def destroy
+    user = current_user
+    plant = params["id"]
+    if PlantEntry.where(user: user, plant: plant).last.delete
+      render json: {plant: plant}   #could maybe send plant index info here in order to trigger rerender of plant index, but that doesn't seem to keep concerns separate
+    else
+      render json: {error: "Plant entry not deleted"}
+    end
+  end
+
   private
   def plant_params
     params.require(:plantData).permit(:id, :name, :image)

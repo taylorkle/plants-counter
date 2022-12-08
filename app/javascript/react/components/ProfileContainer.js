@@ -86,8 +86,8 @@ const ProfileContainer = props => {
             {addButton}
           </div>
         </div>
-        <div className="cell medium-6 large-6 plant-section">
-          <PlantIndex/>
+        <div className="cell medium-6 large-6">
+          <PlantIndex />
         </div>
       </div>
     </div>
