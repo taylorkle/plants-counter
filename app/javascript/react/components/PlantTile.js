@@ -21,7 +21,9 @@ const PlantTile = props => {
           "Accept": "application/json",
         }
       })
-      const responseBody = await response.json()  //send something back that can be used to update PlantData in order to render updated list of plants. might need to set state in parent component that tracks if something was deleted which triggers rerender
+      const responseBody = await response.json()
+      //need to figure out what response to send
+      props.setPlantRemoved(true)
 
       if (!response.ok) {
         const errorMessage =`${response.status} (${response.statusText})`

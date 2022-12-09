@@ -40,8 +40,9 @@ class Api::V1::PlantsController < ApiController
   def destroy
     user = current_user
     plant = params["id"]
-    if PlantEntry.where(user: user, plant: plant).last.delete
-      render json: {plant: plant}   #could maybe send plant index info here in order to trigger rerender of plant index, but that doesn't seem to keep concerns separate
+    binding.pry
+    if PlantEntry.where(user: user, plant: plant).last.delete #this does not return false, returns nomethod error
+      render json: {plant: plant}
     else
       render json: {error: "Plant entry not deleted"}
     end
