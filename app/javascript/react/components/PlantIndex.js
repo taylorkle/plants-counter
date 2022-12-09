@@ -23,23 +23,25 @@ const PlantIndex = props => {
 
   useEffect(() => {
     fetchPlants()
-  }, [])
+  }, [props.plantRemoved])
 
   const plantTiles = plantData.map(plant => {
     return(
       <PlantTile
         key={plant.id}
+        id={plant.id}
         name={plant.name}
         image={plant.image}
+        setPlantRemoved={props.setPlantRemoved}
       />
     )
   })
 
   let displayPlants = null
-  let addLink = null
+  let addPlant = null
   if (plantData.length !== 0) {
     displayPlants = <h2 className="summary-heading">Plants Consumed this Week</h2>
-    addLink =
+    addPlant =
     <Link className="cell small-4 medium-3 large-3 plant-tile" to="/plants">
       <p>New Plant</p>
       <p className="add">+</p>
@@ -51,7 +53,7 @@ const PlantIndex = props => {
       {displayPlants}
         <div className="grid-x">
           {plantTiles}
-          {addLink}
+          {addPlant}
         </div>
     </div>
   )

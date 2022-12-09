@@ -190,6 +190,7 @@ ul {
 .plant-tile {
   display: inline-block;
   margin: 20px;
+  text-align: center;
 }
 
 .goal-section {
@@ -253,9 +254,6 @@ ul {
   margin: 30px;
 }
 
-.plant-section {
-  text-align: center;
-}
 
 a.plant-tile {
   min-height: 130px;
@@ -264,3 +262,17 @@ a.plant-tile {
 .add {
   font-size: 35px;
 }
+
+.add-opacity {
+  opacity: 0.2;
+}
+
+.remove {
+  color: red;
+  font-size: 20px;
+}
+
+.right-align {
+  text-align: right;
+}
+

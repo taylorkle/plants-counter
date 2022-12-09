@@ -37,6 +37,18 @@ class Api::V1::PlantsController < ApiController
     render json: { plants: current_plants }
   end
 
+  def destroy
+    user = current_user
+    plant = params["id"]
+    plant_entry = PlantEntry.where(user: user, plant: plant).last
+    if plant_entry
+      plant_entry.destroy
+      render json: {plant: plant}
+    else
+      render json: {error_status: true, error: "Plant could not be deleted"}, status: 400
+    end
+  end
+
   private
   def plant_params
     params.require(:plantData).permit(:id, :name, :image)

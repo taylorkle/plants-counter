@@ -12,6 +12,7 @@ const ProfileContainer = props => {
     plantNumber: null,
   })
   const [showForm, setShowForm] = useState(false)
+  const [plantRemoved, setPlantRemoved] = useState(null)
 
   const fetchUser = async () => {
     try {
@@ -36,7 +37,7 @@ const ProfileContainer = props => {
 
   useEffect(() => {
     fetchUser()
-  }, [])
+  }, [plantRemoved])
 
   const currentDay = new Date
   const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
@@ -74,7 +75,7 @@ const ProfileContainer = props => {
   return(
     <div>
       <h1>{currentWeek}</h1>
-      <div className="profile-page grid-x grid-margin-x">
+      <div className="profile-page grid-x">
         <div className="cell medium-6 large-6 goal-section">
           <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
           {progressDisplay}
@@ -86,8 +87,11 @@ const ProfileContainer = props => {
             {addButton}
           </div>
         </div>
-        <div className="cell medium-6 large-6 plant-section">
-          <PlantIndex/>
+        <div className="cell medium-6 large-6">
+          <PlantIndex
+            setPlantRemoved={setPlantRemoved}
+            plantRemoved={plantRemoved}
+          />
         </div>
       </div>
     </div>
