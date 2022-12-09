@@ -40,11 +40,12 @@ class Api::V1::PlantsController < ApiController
   def destroy
     user = current_user
     plant = params["id"]
-    binding.pry
-    if PlantEntry.where(user: user, plant: plant).last.delete #this does not return false, returns nomethod error
+    plant_entry = PlantEntry.where(user: user, plant: plant).last
+    if plant_entry
+      plant_entry.destroy
       render json: {plant: plant}
     else
-      render json: {error: "Plant entry not deleted"}
+      render json: {error_status: true, error: "Plant could not be deleted"}, status: 400
     end
   end
 

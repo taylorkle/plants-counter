@@ -4,7 +4,6 @@ import PlantTile from './PlantTile.js'
 
 const PlantIndex = props => {
   const [plantData, setPlantData] = useState([])
-  const [plantRemoved, setPlantRemoved] = useState(false)
 
   const fetchPlants = async () => {
     try {
@@ -24,7 +23,7 @@ const PlantIndex = props => {
 
   useEffect(() => {
     fetchPlants()
-  }, [plantRemoved])
+  }, [props.plantRemoved])
 
   const plantTiles = plantData.map(plant => {
     return(
@@ -33,7 +32,7 @@ const PlantIndex = props => {
         id={plant.id}
         name={plant.name}
         image={plant.image}
-        setPlantRemoved={setPlantRemoved}
+        setPlantRemoved={props.setPlantRemoved}
       />
     )
   })

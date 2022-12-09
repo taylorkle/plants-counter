@@ -12,6 +12,7 @@ const ProfileContainer = props => {
     plantNumber: null,
   })
   const [showForm, setShowForm] = useState(false)
+  const [plantRemoved, setPlantRemoved] = useState(null)
 
   const fetchUser = async () => {
     try {
@@ -36,7 +37,7 @@ const ProfileContainer = props => {
 
   useEffect(() => {
     fetchUser()
-  }, [])
+  }, [plantRemoved])
 
   const currentDay = new Date
   const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
@@ -87,7 +88,10 @@ const ProfileContainer = props => {
           </div>
         </div>
         <div className="cell medium-6 large-6">
-          <PlantIndex />
+          <PlantIndex
+            setPlantRemoved={setPlantRemoved}
+            plantRemoved={plantRemoved}
+          />
         </div>
       </div>
     </div>

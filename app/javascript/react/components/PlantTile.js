@@ -22,9 +22,7 @@ const PlantTile = props => {
         }
       })
       const responseBody = await response.json()
-      //need to figure out what response to send
-      props.setPlantRemoved(true)
-
+      props.setPlantRemoved(responseBody.plant)
       if (!response.ok) {
         const errorMessage =`${response.status} (${response.statusText})`
         throw new Error(errorMessage)
