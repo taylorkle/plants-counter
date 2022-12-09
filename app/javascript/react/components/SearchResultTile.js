@@ -27,6 +27,7 @@ const SearchResultTile = props => {
         throw new Error(errorMessage)
       }
       props.setPlantAdded(true)
+      props.setError("")
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }

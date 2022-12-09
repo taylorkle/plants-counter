@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
 import PlantIndex from "./PlantIndex.js"
 import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
@@ -40,20 +39,14 @@ const ProfileContainer = props => {
     fetchUser()
   }, [plantRemoved])
 
-  // let message = null
-  // let progressDisplay = null
-  // let plantDisplay = null
-  // let addButton = null
-  // if(userData.plantNumber !== 0) {
-  //   progressDisplay = <span>Start adding plants to work towards your goal! </span>
-  //   addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
-  // } else {
-  //   progressDisplay =
-  //   <ProgressBar
-  //     plantGoal={userData.plantGoal}
-  //     plantNumber={userData.plantNumber}
-  //   />
-  // // }
+  const currentWeek = getCurrentWeek()
+
+  let progressMessage = null
+  if(userData.plantNumber !== 0) {
+    progressMessage = <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
+  } else {
+    progressMessage = <span>Start adding plants to work towards your goal! </span>
+  }
 
   const handleClick = (event) => {
     setShowForm(true)
@@ -68,12 +61,10 @@ const ProfileContainer = props => {
     />
   }
 
-  const currentWeek = getCurrentWeek()
-
   return(
     <div>
       <h1>{currentWeek}</h1>
-      <div className="profile-page grid-x">
+      <div className="profile-page grid-x grid-margin-x">
         <div className="goal-section cell medium-6 large-6">
           <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
           <ProgressBar
@@ -81,11 +72,11 @@ const ProfileContainer = props => {
             plantNumber={userData.plantNumber}
           />
           <div className="summary-text">
+            {progressMessage}
             <span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
           </div>
           <div>
             {formDisplay}
-            {/* {addButton} */}
           </div>
         </div>
         <div className="cell medium-6 large-6">
