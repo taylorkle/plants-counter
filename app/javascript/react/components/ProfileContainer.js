@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
-import GetCurrentWeek from "./services/getCurrentWeek.js"
 import PlantIndex from "./PlantIndex.js"
 import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
@@ -14,6 +13,7 @@ const ProfileContainer = props => {
     plantNumber: null,
   })
   const [showForm, setShowForm] = useState(false)
+  const [plantRemoved, setPlantRemoved] = useState(null)
 
   const fetchUser = async () => {
     try {
@@ -38,8 +38,9 @@ const ProfileContainer = props => {
 
   useEffect(() => {
     fetchUser()
-  }, [])
+  }, [plantRemoved])
 
+  let message = null
   let progressDisplay = null
   let plantDisplay = null
   let addButton = null
@@ -48,17 +49,17 @@ const ProfileContainer = props => {
     addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
   } else {
     progressDisplay =
-    <div>
-      <ProgressBar
-        plantGoal={userData.plantGoal}
-        plantNumber={userData.plantNumber}
-      />
-      <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
-    </div>
-    plantDisplay = <PlantIndex/>
+    <ProgressBar
+      plantGoal={userData.plantGoal}
+      plantNumber={userData.plantNumber}
+    />
   }
 
-  let formDisplay = <button className="button set-goal" onClick={handleClick} type="submit">Set New Goal</button>
+  const handleClick = (event) => {
+    setShowForm(true)
+  }
+
+  let formDisplay = <button className="button" onClick={handleClick} type="submit">Set New Goal</button>
   if (showForm) {
     formDisplay= <NewGoalForm
       setUserData={setUserData}
@@ -67,18 +68,14 @@ const ProfileContainer = props => {
     />
   }
 
-  const handleClick = (event) => {
-    setShowForm(true)
-  }
-
   const currentWeek = getCurrentWeek()
 
   return(
     <div>
       <h1>{currentWeek}</h1>
-      <div className="profile-page grid-x grid-margin-x">
+      <div className="profile-page grid-x">
         <div className="goal-section cell medium-6 large-6">
-          <h2 className="summary">{userData.firstName}'s Plant Summary</h2>
+          <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
           {progressDisplay}
           <div className="summary-text">
             <span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
@@ -89,7 +86,10 @@ const ProfileContainer = props => {
           </div>
         </div>
         <div className="cell medium-6 large-6">
-          {plantDisplay}
+          <PlantIndex
+            setPlantRemoved={setPlantRemoved}
+            plantRemoved={plantRemoved}
+          />
         </div>
       </div>
     </div>
