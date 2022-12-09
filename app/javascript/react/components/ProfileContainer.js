@@ -40,20 +40,20 @@ const ProfileContainer = props => {
     fetchUser()
   }, [plantRemoved])
 
-  let message = null
-  let progressDisplay = null
-  let plantDisplay = null
-  let addButton = null
-  if(userData.plantNumber === 0) {
-    progressDisplay = <span>Start adding plants to work towards your goal! </span>
-    addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
-  } else {
-    progressDisplay =
-    <ProgressBar
-      plantGoal={userData.plantGoal}
-      plantNumber={userData.plantNumber}
-    />
-  }
+  // let message = null
+  // let progressDisplay = null
+  // let plantDisplay = null
+  // let addButton = null
+  // if(userData.plantNumber !== 0) {
+  //   progressDisplay = <span>Start adding plants to work towards your goal! </span>
+  //   addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
+  // } else {
+  //   progressDisplay =
+  //   <ProgressBar
+  //     plantGoal={userData.plantGoal}
+  //     plantNumber={userData.plantNumber}
+  //   />
+  // // }
 
   const handleClick = (event) => {
     setShowForm(true)
@@ -76,13 +76,16 @@ const ProfileContainer = props => {
       <div className="profile-page grid-x">
         <div className="goal-section cell medium-6 large-6">
           <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
-          {progressDisplay}
+          <ProgressBar
+            plantGoal={userData.plantGoal}
+            plantNumber={userData.plantNumber}
+          />
           <div className="summary-text">
             <span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
           </div>
           <div>
             {formDisplay}
-            {addButton}
+            {/* {addButton} */}
           </div>
         </div>
         <div className="cell medium-6 large-6">
