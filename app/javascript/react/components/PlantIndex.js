@@ -37,24 +37,11 @@ const PlantIndex = props => {
     )
   })
 
-  // let displayPlants = null
-  // let addPlant = null
-  // if (plantData.length !== 0) {
-  //   displayPlants = <h2 className="summary-heading">Plants Consumed this Week</h2>
-  //   addPlant =
-  //   <Link className="cell small-4 medium-3 large-3 plant-tile" to="/plants">
-  //     <p>New Plant</p>
-  //     <p className="add">+</p>
-  //   </Link>
-  // }
-
   return(
     <div>
-      {/* {displayPlants} */}
       <h2 className="summary-heading">Plants Consumed this Week</h2>
         <div className="grid-x">
           {plantTiles}
-          {/* {addPlant} */}
           <Link className="cell small-4 medium-3 large-3 plant-tile" to="/plants">
             <p>New Plant</p>
             <p className="add">+</p>
