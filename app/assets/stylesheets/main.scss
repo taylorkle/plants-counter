@@ -76,7 +76,7 @@ li {
 
 h1 {
   font-size: 30px;
-  margin: 20px 35px;
+  margin: 20px 40px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -177,10 +177,6 @@ ul {
   margin: 20px;
 }
 
-.grid-x {
-  margin: 20px 0px;
-}
-
 .plant-display {
   display: block;
   margin-left: auto;
@@ -195,6 +191,7 @@ ul {
 
 .goal-section {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .goal-section input {
@@ -212,7 +209,7 @@ ul {
 }
 
 .progress-display {
-  margin: 60px auto 90px auto;
+  margin: 60px auto;
 }
 
 .progress-bar-container {
@@ -274,4 +271,3 @@ a.plant-tile {
 .right-align {
   text-align: right;
 }
-

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
 import PlantIndex from "./PlantIndex.js"
 import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
+import getCurrentWeek from "./services/getCurrentWeek.js"
 
 const ProfileContainer = props => {
   const [userData, setUserData] = useState({
@@ -39,24 +39,13 @@ const ProfileContainer = props => {
     fetchUser()
   }, [plantRemoved])
 
-  const currentDay = new Date
-  const firstDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay()))
-  const lastDay = new Date(currentDay.setDate(currentDay.getDate() - currentDay.getDay() + 6))
-  const currentWeek = `${firstDay.toDateString()} - ${lastDay.toDateString()}`
+  const currentWeek = getCurrentWeek()
 
-  let message = null
-  let progressDisplay = null
-  let addButton = null
-  if(userData.plantNumber === 0) {
-    message = <span>Start adding plants to work towards your goal! </span>
-    addButton = <Link to="/plants"><button className="button" type="button" >Add Plants</button></Link>
+  let progressMessage = null
+  if(userData.plantNumber !== 0) {
+    progressMessage = <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
   } else {
-    message = <span>Great work, {userData.firstName}! You have {userData.plantNumber} plants so far. </span>
-    progressDisplay =
-    <ProgressBar
-      plantGoal={userData.plantGoal}
-      plantNumber={userData.plantNumber}
-    />
+    progressMessage = <span>Start adding plants to work towards your goal! </span>
   }
 
   const handleClick = (event) => {
@@ -75,16 +64,19 @@ const ProfileContainer = props => {
   return(
     <div>
       <h1>{currentWeek}</h1>
-      <div className="profile-page grid-x">
-        <div className="cell medium-6 large-6 goal-section">
+      <div className="profile-page grid-x grid-margin-x">
+        <div className="goal-section cell medium-6 large-6">
           <h2 className="summary-heading">{userData.firstName}'s Plant Summary</h2>
-          {progressDisplay}
+          <ProgressBar
+            plantGoal={userData.plantGoal}
+            plantNumber={userData.plantNumber}
+          />
           <div className="summary-text">
-            {message}<span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
+            {progressMessage}
+            <span>Your current goal is to eat {userData.plantGoal} types of plants per week.</span>
           </div>
           <div>
             {formDisplay}
-            {addButton}
           </div>
         </div>
         <div className="cell medium-6 large-6">
