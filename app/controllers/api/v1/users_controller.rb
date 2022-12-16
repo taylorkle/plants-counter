@@ -37,7 +37,7 @@ class Api::V1::UsersController < ApiController
 
   private
   def new_goal_params
-    params.require(:plant_goal)
+    params.require(:goal)
   end
 
 end

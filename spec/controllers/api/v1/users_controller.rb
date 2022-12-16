@@ -44,7 +44,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     it "should return updated plant goal" do
       sign_in user
 
-      patch :update, params: {plant_goal: 28, id: user["id"]}
+      patch :update, params: {goal: 28, id: user["id"]}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
