@@ -9,7 +9,7 @@ class Api::V1::PlantEntriesController < ApiController
     if Plant.where(api_id: plant_params["id"]).empty?
       plant = Plant.new(api_id: plant_params["id"], name: plant_params["name"], image: plant_params["image"])
       if !plant.save
-        render json: {error_status: true, error: plant.errors.full_messages},status: 500 and return
+        render json: { error_status: true, error: plant.errors.full_messages },status: 500 and return
       end
     else
       plant = Plant.find_by(name: plant_params["name"])
@@ -40,9 +40,9 @@ class Api::V1::PlantEntriesController < ApiController
     plant_entry = PlantEntry.where(user: user, plant: plant).last
     if plant_entry
       plant_entry.destroy
-      render json: {plant: plant}
+      render json: { plant: plant }
     else
-      render json: {error_status: true, error: "Plant could not be deleted"}, status: 400
+      render json: { error_status: true, error: "Plant could not be deleted" }, status: 400
     end
   end
 

@@ -4,22 +4,24 @@ require_relative "../../../models/services/date_filter.rb"
 class Api::V1::UsersController < ApiController
 
   def show
-    if User.find(params[:id])
-      user = User.find(params[:id])
+    if !current_user.nil?
+      user = User.find(current_user["id"])
       plant_entries = current_user.plant_entries
       current_plants = DateFilter.get_current_plants(plant_entries)
       herb_count = HerbCounter.count(current_plants)
       plant_number = (current_plants.length + herb_count * 0.25).to_f
 
       render json: { user: {id: user.id, first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
+    else
+      render json: { errorStatus: true, error: "User must be logged in" }, status: 400
     end
   end
 
   def index
     if !current_user.nil?
-      render json: { user: {email: current_user.email, id: current_user.id} }
+      render json: { user: {id: current_user.id} }
     else
-      render json: { errorStatus: true, error: "User not logged in" }
+      render json: { errorStatus: true, error: "User must be logged in" }, status: 400
     end
   end
 
@@ -35,7 +37,7 @@ class Api::V1::UsersController < ApiController
 
   private
   def new_goal_params
-    params.require(:goal)
+    params.require(:plant_goal)
   end
 
 end
