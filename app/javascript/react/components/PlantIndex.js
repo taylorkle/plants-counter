@@ -7,7 +7,7 @@ const PlantIndex = props => {
 
   const fetchPlants = async () => {
     try {
-      const response = await fetch(`/api/v1/plants`)
+      const response = await fetch(`/api/v1/plant_entries`)
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)

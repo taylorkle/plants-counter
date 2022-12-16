@@ -35,7 +35,6 @@
 ## TODO
 - Unit and controller tests
 - Serializers
-- Add delete plant feature
 - Add plant intake and goal history with data visualization
 - Add recipes feature
 

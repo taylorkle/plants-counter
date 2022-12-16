@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 const SuccessTile = props => {
   const [user, setUser] = useState({
-    id: null,
-    email: ""
+    id: null
   })
 
   const fetchUser = async () => {
