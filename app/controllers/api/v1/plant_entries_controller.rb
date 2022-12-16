@@ -1,6 +1,6 @@
 require_relative "../../../models/services/date_filter.rb"
 
-class Api::V1::PlantsController < ApiController
+class Api::V1::PlantEntriesController < ApiController
 
   def create
     user = current_user
@@ -19,7 +19,7 @@ class Api::V1::PlantsController < ApiController
     if plant && DateFilter.not_duplicate?(last_plant_entry)
       plant_entry = PlantEntry.new(plant: plant, user: user)
     else
-      render json: { error_status: true, error: "Plant already added" }, status: 400
+      render json: { error_status: true, error: "Plant already added for current week" }, status: 400
     end
 
     if plant_entry

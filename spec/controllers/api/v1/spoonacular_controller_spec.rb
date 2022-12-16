@@ -4,7 +4,7 @@ RSpec.describe Api::V1::SpoonacularController, type: :controller do
   describe "POST#search" do
 
     it "should return one food item for a valid search result" do
-      get :search, {params: {search_string: "apple"}}
+      post :search, params: {search_string: "apple"}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
@@ -16,7 +16,7 @@ RSpec.describe Api::V1::SpoonacularController, type: :controller do
     end
 
     it "should return an error if there are no search results" do
-      get :search, {params: {search_string: "bergieorti"}}
+      post :search, params: {search_string: "bergieorti"}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 400
