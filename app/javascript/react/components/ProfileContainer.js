@@ -22,12 +22,12 @@ const ProfileContainer = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      let user = responseBody.user
+      const userData = responseBody.userData
       setUserData({
-        id: user.id,
-        firstName: user.first_name,
-        plantGoal: user.plant_goal,
-        plantNumber: user.plant_number
+        id: userData.user.id,
+        firstName: userData.user.first_name,
+        plantGoal: userData.user.plant_goal,
+        plantNumber: userData.plantTotal
       })
     }
     catch (error) {
