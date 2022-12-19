@@ -1,4 +1,4 @@
-require_relative "../../../models/services/date_filter.rb"
+require_relative "../../../models/services/plant_date_filter.rb"
 
 class Api::V1::PlantsController < ApiController
 
@@ -16,7 +16,7 @@ class Api::V1::PlantsController < ApiController
     end
 
     last_plant_entry = PlantEntry.where(user: user, plant: plant).order(:created_at).last
-    if DateFilter.not_duplicate?(last_plant_entry)
+    if PlantDateFilter.not_duplicate?(last_plant_entry)
       plant_entry = PlantEntry.new(plant: plant, user: user)
       if plant_entry.save
         render json: { plant: plant }
@@ -30,7 +30,7 @@ class Api::V1::PlantsController < ApiController
 
   def index
     plant_entries = current_user.plant_entries
-    current_plants = DateFilter.get_current_plants(plant_entries)
+    current_plants = PlantDateFilter.get_current_plants(plant_entries)
     render json: { plants: current_plants }
   end
 

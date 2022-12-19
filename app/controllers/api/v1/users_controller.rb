@@ -1,12 +1,12 @@
 require_relative "../../../models/services/plant_counter.rb"
-require_relative "../../../models/services/date_filter.rb"
+require_relative "../../../models/services/plant_date_filter.rb"
 
 class Api::V1::UsersController < ApiController
 
   def show
     if !current_user.nil?
       user = current_user
-      current_plants = DateFilter.get_current_plants(current_user.plant_entries)
+      current_plants = PlantDateFilter.get_current_plants(current_user.plant_entries)
       plant_number = PlantCounter.plant_count(current_plants)
 
       render json: { userData: {user: user, plantTotal: plant_number} }
