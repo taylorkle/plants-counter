@@ -1,34 +1,19 @@
 import React, { useState } from 'react'
+import FetchUsers from "./services/fetchUsers"
 
 const NewGoalForm = props => {
   const [newGoal, setNewGoal] = useState("")
   const [error, setError] = useState("")
 
   const postGoal = async () => {
-    try {
-      const response = await fetch(`/api/v1/users/${props.userData.id}`, {
-        method: "PATCH",
-        credentials: "same-origin",
-        body: JSON.stringify({
-          goal: newGoal
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        }
-      })
-      const responseBody = await response.json()
-      if (!response.ok) {
-        setError(responseBody.error)
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
+    const response = await FetchUsers.setGoal(newGoal, props.userData.id)
+    if (response.error) {
+      setError(response.error)
+    } else {
       props.setUserData({
         ...props.userData,
-        plantGoal: responseBody.goal,
+        plantGoal: response.goal,
       })
-    } catch(error) {
-      console.error(`Error in Fetch: ${error.message}`)
     }
   }
 
