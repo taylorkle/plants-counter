@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import SearchBar from './SearchBar.js'
 import SearchResultTile from './SearchResultTile.js'
-import SuccessTile from './SuccessTile.js'
+import PlantAddedTile from './PlantAddedTile.js'
 
 const SearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
@@ -23,7 +23,7 @@ const SearchContainer = props => {
       setError={setError}
     />
   } else if (plantAdded === true) {
-    searchResultDisplay = <SuccessTile/>
+    searchResultDisplay = <PlantAddedTile/>
   }
 
   return (

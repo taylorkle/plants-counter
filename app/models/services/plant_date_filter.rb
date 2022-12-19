@@ -1,4 +1,4 @@
-class DateFilter
+class PlantDateFilter
 
   def self.get_current_plants(plant_entries)
     current_plants = []

@@ -4,7 +4,7 @@ const SearchResultTile = props => {
 
   const postPlant = async () => {
     try {
-      const response = await fetch("/api/v1/plant_entries", {
+      const response = await fetch("/api/v1/plants", {
         method: "POST",
         credentials: "same-origin",
         body: JSON.stringify({

@@ -13,7 +13,7 @@ const PlantTile = props => {
 
   const deletePlant = async () => {
     try {
-      const response = await fetch(`/api/v1/plant_entries/${props.id}`, {
+      const response = await fetch(`/api/v1/plants/${props.id}`, {
         method: "DELETE",
         credentials: "same-origin",
         headers: {

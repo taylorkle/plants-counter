@@ -2,8 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const SuccessTile = props => {
-  const [user, setUser] = useState({
+const PlantAddedTile = props => {
+  const [userId, setUserId] = useState({
     id: null
   })
 
@@ -15,7 +15,7 @@ const SuccessTile = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      setUser(responseBody.user)
+      setUserId(responseBody.user.id)
     } catch(error) {
       console.error(`Error in Fetch ${error.message}`)
     }
@@ -28,9 +28,9 @@ const SuccessTile = props => {
   return(
     <div className="search-page search">
       <p>Added Successfully!</p>
-      <Link to={`/users/${user.id}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
+      <Link to={`/users/${userId.id}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
     </div>
   )
 }
 
-export default SuccessTile
+export default PlantAddedTile

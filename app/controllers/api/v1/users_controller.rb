@@ -1,17 +1,15 @@
-require_relative "../../../models/services/herb_counter.rb"
-require_relative "../../../models/services/date_filter.rb"
+require_relative "../../../models/services/plant_counter.rb"
+require_relative "../../../models/services/plant_date_filter.rb"
 
 class Api::V1::UsersController < ApiController
 
   def show
     if !current_user.nil?
-      user = User.find(current_user["id"])
-      plant_entries = current_user.plant_entries
-      current_plants = DateFilter.get_current_plants(plant_entries)
-      herb_count = HerbCounter.count(current_plants)
-      plant_number = (current_plants.length + herb_count * 0.25).to_f
+      user = current_user
+      current_plants = PlantDateFilter.get_current_plants(current_user.plant_entries)
+      plant_number = PlantCounter.plant_count(current_plants)
 
-      render json: { user: {id: user.id, first_name: user.first_name, plant_goal: user.plant_goal, plant_number: plant_number} }
+      render json: { userData: {user: user, plantTotal: plant_number} }
     else
       render json: { errorStatus: true, error: "User must be logged in" }, status: 400
     end
@@ -29,7 +27,7 @@ class Api::V1::UsersController < ApiController
     if current_user.update(plant_goal: new_goal_params.to_i)
       render json: { goal: current_user["plant_goal"] }
     else
-      render json: { error: current_user.errors.full_messages.to_sentence },
+      render json: { errorStatus: true, error: current_user.errors.full_messages.to_sentence },
       status: 400
     end
 

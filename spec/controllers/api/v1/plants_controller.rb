@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Api::V1::PlantEntriesController, type: :controller do
+RSpec.describe Api::V1::PlantsController, type: :controller do
 
   let!(:user) {User.create(first_name: "Mike", email: "Mike@gmail.com", password: "foodie2", plant_goal: 25)}
 
