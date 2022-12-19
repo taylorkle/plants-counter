@@ -1,7 +1,7 @@
 class Api::V1::SpoonacularController < ApiController
 
   def search
-    plant_name = params["search_string"]
+    plant_name = search_params
 
     api_key = ENV["SPOONACULAR_API_KEY"]
 
@@ -17,6 +17,11 @@ class Api::V1::SpoonacularController < ApiController
     else
       render json: { errorStatus: true, error: "No results matched your search" }, status: 400
     end
+  end
+
+  private
+  def search_params
+    params.require(:search_string)
   end
 end
 

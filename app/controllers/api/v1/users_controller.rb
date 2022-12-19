@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApiController
     if current_user.update(plant_goal: new_goal_params.to_i)
       render json: { goal: current_user["plant_goal"] }
     else
-      render json: { error: current_user.errors.full_messages.to_sentence },
+      render json: { errorStatus: true, error: current_user.errors.full_messages.to_sentence },
       status: 400
     end
 
