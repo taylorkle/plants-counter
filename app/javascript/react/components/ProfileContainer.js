@@ -17,7 +17,6 @@ const ProfileContainer = props => {
 
   const fetchUser = async () => {
     const userInfo = await FetchUsers.getUserData(props.match.params.id)
-    debugger
       setUserData({
         id: userInfo.user.id,
         firstName: userInfo.user.first_name,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const PlantTile = props => {
+const PlantTile = ({setPlantRemoved, name, image, id}) => {
   const [hover, setHover] = useState(false)
 
   const handleHover = () => {
@@ -13,7 +13,7 @@ const PlantTile = props => {
 
   const deletePlant = async () => {
     try {
-      const response = await fetch(`/api/v1/plants/${props.id}`, {
+      const response = await fetch(`/api/v1/plants/${id}`, {
         method: "DELETE",
         credentials: "same-origin",
         headers: {
@@ -22,7 +22,7 @@ const PlantTile = props => {
         }
       })
       const responseBody = await response.json()
-      props.setPlantRemoved(responseBody.plant)
+      setPlantRemoved(responseBody.plant)
       if (!response.ok) {
         const errorMessage =`${response.status} (${response.statusText})`
         throw new Error(errorMessage)
@@ -43,8 +43,8 @@ const PlantTile = props => {
     <div className={`cell small-4 medium-3 large-3 plant-tile`} onMouseEnter={handleHover} onMouseLeave={handleLeaveHover}>
       {remove_button}
       <div className={opacity}>
-        <p>{props.name}</p>
-        <img className="plant-display" src={`https://spoonacular.com/cdn/ingredients_100x100/${props.image}`} alt={props.name}/>
+        <p>{name}</p>
+        <img className="plant-display" src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`} alt={name}/>
       </div>
     </div>
   )

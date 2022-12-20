@@ -10,7 +10,7 @@ const SearchBar = props => {
         method: "POST",
         credentials: "same-origin",
         body: JSON.stringify({
-          search_string: searchString
+          searchString: searchString
         }),
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,11 @@ const SearchBar = props => {
   }
 
   const validSearch = () => {
-    (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/))
+    if (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/)) {
+      return true
+    } else {
+      return false
+    }
   }
 
   const handleSubmit = event => {
