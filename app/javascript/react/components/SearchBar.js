@@ -30,11 +30,7 @@ const SearchBar = props => {
   }
 
   const validSearch = () => {
-    if (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/)) {
-      return true
-    } else {
-      return false
-    }
+    (searchString.trim() !== "" && searchString.match(/^([a-zA-Z]?[\s]?)+$/))
   }
 
   const handleSubmit = event => {

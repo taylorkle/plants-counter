@@ -11,7 +11,7 @@ const SearchContainer = props => {
     image: ""
   })
   const [plantAdded, setPlantAdded] = useState(false)
-  const [error, setError] = useState([])
+  const [error, setError] = useState("")
 
   let searchResultDisplay = null
   if (searchResult.id) {

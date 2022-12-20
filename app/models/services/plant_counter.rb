@@ -2,15 +2,9 @@ class PlantCounter
 
   HERB_LIST =  ["allspice"," angelica", "anise", "asafoetida", "bay leaves", "fresh basil", "bergamot", "caraway", "cardamom", "cayenne pepper", "celery seed", "chervil", "chicory", "chili pepper", "chives", "cilantro", "cinnamon", "clove", "coriander", "cumin", "curry", "dill", "fennel", "fenugreek", "filé", "ginger", "horseradish", "hyssop", "lavender", "lemon balm", "lemon grass", "lemon verbena", "marjoram", "nutmeg", "oregano", "paprika", "parsley", "peppermint", "poppy seeds", "rosemary", "saffron", "sage", "savory",  "sesame, sorrel", "star anise", "spearmint", "tarragon", "thyme", "turmeric", "vanilla", "wasabi", "yellow mustard seeds"]
 
-  attr_reader :herb_count
-
-  def initialize
-    @herb_count = 0
-  end
-
   def self.plant_count(user_plant_array)
-    @herb_count = count_herbs(user_plant_array)
-    return (user_plant_array.length + @herb_count * 0.25 - @herb_count).round(2)
+    herb_count = count_herbs(user_plant_array)
+    return (user_plant_array.length - herb_count + herb_count * 0.25).round(2)
   end
 
   private

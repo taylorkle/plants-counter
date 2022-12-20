@@ -41,7 +41,7 @@ class Api::V1::PlantsController < ApiController
     if plant_entry.destroy
       render json: { plant: plant }
     else
-      render json: { errorStatus: true, error: "Plant could not be deleted" }, status: 400
+      render json: { errorStatus: true, error: "Plant could not be deleted" }, status: 500
     end
   end
 
