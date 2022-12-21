@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'  //current react router not up to date, cannot access useNavigate
 
 const PlantAddedTile = props => {
   const [userId, setUserId] = useState({
@@ -21,14 +21,23 @@ const PlantAddedTile = props => {
     }
   }
 
+  let navigate = useNavigate()
+  onClickHandler = () => {
+    navigate(`users/${userId.id}`)
+  }
+
   useEffect(() => {
     fetchUser()
+    new Toast({message: "Plant Added Successfully!", customButtons: [{text: "View on Profile", onClick: onClickHandler}]})
   }, [])
 
   return(
-    <div className="search-page search">
-      <p>Added Successfully!</p>
-      <Link to={`/users/${userId.id}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
+    // <div className="search-page search">
+    //   <p>Added Successfully!</p>
+    //   <Link to={`/users/${userId.id}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
+    // </div>
+    <div>
+
     </div>
   )
 }
