@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchResultTile = props => {
+const SearchResultTile = ({setSearchResult, searchResult, setError, setPlantAdded}) => {
 
   const postPlant = async () => {
     try {
@@ -16,18 +16,18 @@ const SearchResultTile = props => {
         }
       })
       const responseBody = await response.json()
-      props.setSearchResult({
+      setSearchResult({
         id: null,
         name: "",
         image: ""
       })
       if (!response.ok) {
-        props.setError(responseBody.error)
+        setError(responseBody.error)
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
-      props.setPlantAdded(true)
-      props.setError("")
+      setPlantAdded(true)
+      setError("")
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
@@ -40,9 +40,9 @@ const SearchResultTile = props => {
 
   return(
     <div className="search-page">
-      <img className="plant-display" src={`https://spoonacular.com/cdn/ingredients_250x250/${props.searchResult.image}`} alt={props.searchResult.name}/>
+      <img className="plant-display" src={`https://spoonacular.com/cdn/ingredients_250x250/${searchResult.image}`} alt={searchResult.name}/>
       <form onClick={handleSubmit} className="add-plant-form">
-        <button className="button add-plant-button" type="submit">+ Add {props.searchResult.name}</button>
+        <button className="button add-plant-button" type="submit">+ Add {searchResult.name}</button>
       </form>
     </div>
   )

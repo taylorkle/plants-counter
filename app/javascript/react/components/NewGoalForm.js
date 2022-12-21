@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import FetchUsers from "./services/fetchUsers"
 
-const NewGoalForm = props => {
+const NewGoalForm = ({userData, setUserData, setShowForm}) => {
   const [newGoal, setNewGoal] = useState("")
   const [error, setError] = useState("")
 
   const postGoal = async () => {
-    const response = await FetchUsers.setGoal(newGoal, props.userData.id)
+    const response = await FetchUsers.setGoal(newGoal, userData.id)
     if (response.error) {
       setError(response.error)
     } else {
-      props.setUserData({
-        ...props.userData,
+      setUserData({
+        ...userData,
         plantGoal: response.goal,
       })
     }
@@ -31,7 +31,7 @@ const NewGoalForm = props => {
       postGoal()
       setNewGoal("")
       setError("")
-      props.setShowForm(false)
+      setShowForm(false)
     } else {
       setError("Must be a whole number greater than 0")
     }

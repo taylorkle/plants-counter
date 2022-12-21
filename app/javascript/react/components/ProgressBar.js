@@ -1,12 +1,12 @@
 import React, {CSSProperties} from 'react'
 
-const ProgressBar = props => {
+const ProgressBar = ({plantNumber, plantGoal}) => {
 
   let progress = 0
   let ideal = 0
-  if (props.plantNumber) {
-    progress = (props.plantNumber / props.plantGoal * 100).toFixed(0)
-    ideal = (props.plantNumber / 30 * 100).toFixed(0)
+  if (plantNumber) {
+    progress = (plantNumber / plantGoal * 100).toFixed(0)
+    ideal = (plantNumber / 30 * 100).toFixed(0)
   }
 
   const styleProgress = {

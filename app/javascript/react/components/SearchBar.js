@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const SearchBar = props => {
+const SearchBar = ({setError, setSearchResult, setPlantAdded}) => {
   const [searchString, setSearchString] = useState("")
 
   const fetchResult = async () => {
@@ -19,11 +19,11 @@ const SearchBar = props => {
       })
       const responseBody = await response.json()
       if (!response.ok) {
-        props.setError(responseBody.error)
+        setError(responseBody.error)
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
-      props.setSearchResult(responseBody)
+      setSearchResult(responseBody)
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
@@ -38,14 +38,14 @@ const SearchBar = props => {
   }
 
   const handleSubmit = event => {
-    props.setPlantAdded(false)
+    setPlantAdded(false)
     event.preventDefault()
     if (validSearch()) {
-      props.setError("")
+      setError("")
       fetchResult()
       setSearchString("")
     } else {
-      props.setError("Not a valid search")
+      setError("Not a valid search")
     }
   }
 
