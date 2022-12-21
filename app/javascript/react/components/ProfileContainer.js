@@ -16,6 +16,7 @@ const ProfileContainer = props => {
 
   const fetchUser = async () => {
     try {
+      debugger         // no longer have props.match.params
       const response = await fetch(`/api/v1/users/${props.match.params.id}`)
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`

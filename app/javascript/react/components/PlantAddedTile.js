@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'  //current react router not up to date, cannot access useNavigate
+import { useNavigate } from 'react-router-dom'
 
 const PlantAddedTile = props => {
   const [userId, setUserId] = useState({
@@ -22,8 +22,8 @@ const PlantAddedTile = props => {
   }
 
   let navigate = useNavigate()
-  onClickHandler = () => {
-    navigate(`users/${userId.id}`)
+  const onClickHandler = () => {
+    navigate(`/users/${userId}`)
   }
 
   useEffect(() => {
