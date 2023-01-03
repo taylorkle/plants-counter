@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApiController
     if !current_user.nil?
       render json: { user: {id: current_user.id} }
     else
-      render json: { errorStatus: true, error: "User must be logged in" }, status: 400
+      render json: { user: {id: nil} }
     end
   end
 

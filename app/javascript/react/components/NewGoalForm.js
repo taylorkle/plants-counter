@@ -1,34 +1,19 @@
 import React, { useState } from 'react'
+import FetchUsers from "./services/fetchUsers"
 
-const NewGoalForm = props => {
+const NewGoalForm = ({userData, setUserData, setShowForm}) => {
   const [newGoal, setNewGoal] = useState("")
   const [error, setError] = useState("")
 
   const postGoal = async () => {
-    try {
-      const response = await fetch(`/api/v1/users/${props.userData.id}`, {
-        method: "PATCH",
-        credentials: "same-origin",
-        body: JSON.stringify({
-          goal: newGoal
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        }
+    const response = await FetchUsers.setGoal(newGoal, userData.id)
+    if (response.error) {
+      setError(response.error)
+    } else {
+      setUserData({
+        ...userData,
+        plantGoal: response.goal,
       })
-      const responseBody = await response.json()
-      if (!response.ok) {
-        setError(responseBody.error)
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      props.setUserData({
-        ...props.userData,
-        plantGoal: responseBody.goal,
-      })
-    } catch(error) {
-      console.error(`Error in Fetch: ${error.message}`)
     }
   }
 
@@ -46,7 +31,7 @@ const NewGoalForm = props => {
       postGoal()
       setNewGoal("")
       setError("")
-      props.setShowForm(false)
+      setShowForm(false)
     } else {
       setError("Must be a whole number greater than 0")
     }

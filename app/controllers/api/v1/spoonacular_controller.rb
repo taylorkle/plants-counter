@@ -21,7 +21,7 @@ class Api::V1::SpoonacularController < ApiController
 
   private
   def search_params
-    params.require(:search_string)
+    params.require(:searchString)
   end
 end
 
