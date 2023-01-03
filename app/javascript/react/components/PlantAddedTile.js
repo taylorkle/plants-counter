@@ -20,14 +20,15 @@ const PlantAddedTile = props => {
       console.error(`Error in Fetch ${error.message}`)
     }
   }
-
+  debugger
   let navigate = useNavigate()
-  const onClickHandler = () => {
+  const onClickHandler = (event) => {
+    debugger
     navigate(`/users/${userId}`)
   }
 
   useEffect(() => {
-    fetchUser()
+    fetchUser()  //await, then
     new Toast({message: "Plant Added Successfully!", customButtons: [{text: "View on Profile", onClick: onClickHandler}]})
   }, [])
 
