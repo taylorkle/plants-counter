@@ -8,7 +8,7 @@ const SearchResultTile = ({setSearchResult, searchResult, setError, setPlantAdde
         method: "POST",
         credentials: "same-origin",
         body: JSON.stringify({
-          plantData: props.searchResult
+          plantData: searchResult
         }),
         headers: {
           "Content-Type": "application/json",

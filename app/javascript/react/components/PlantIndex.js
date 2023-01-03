@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PlantTile from './PlantTile.js'
 
-const PlantIndex = ({setPlantRemoved}) => {
+const PlantIndex = ({setPlantRemoved, plantRemoved}) => {
   const [plantData, setPlantData] = useState([])
 
   const fetchPlants = async () => {
@@ -23,7 +23,7 @@ const PlantIndex = ({setPlantRemoved}) => {
 
   useEffect(() => {
     fetchPlants()
-  }, [props.plantRemoved])
+  }, [plantRemoved])
 
   const plantTiles = plantData.map(plant => {
     return(

@@ -20,7 +20,7 @@ const PlantAddedTile = props => {
   return(
     <div className="search-page search">
       <p>Added Successfully!</p>
-      <Link to={`/users/${userId.id}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
+      <Link to={`/users/${userId}`}><button className="button add-plant-button" type="button">View On Profile</button></Link>
     </div>
   )
 }
