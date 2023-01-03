@@ -1,23 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import FetchUsers from "./services/fetchUsers.js"
 
 const Homepage = props => {
-  const [authentication, setAuthentication] = useState(false)
+  const [authenticate, setAuthenticate] = useState(false)
 
   const fetchUser = async () => {
-    try {
-      const response = await fetch("/api/v1/users")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      const responseBody = await response.json()
-      if (responseBody.user) {
-        setAuthentication(true)
-      }
-    } catch(error) {
-      console.error(`Error in Fetch ${error.message}`)
+    const user = await FetchUsers.findUser()
+    if (user) {
+      setAuthenticate(true)
     }
   }
 
@@ -26,7 +18,7 @@ const Homepage = props => {
   }, [])
 
   let button = null
-  if (authentication) {
+  if (authenticate) {
     button = <button className="button" type="button"> <Link to='/plants'>START COUNTING</Link></button>
   } else {
     button = <button className="button"><a href="/users/sign_in">SIGN IN TO START COUNTING</a></button>

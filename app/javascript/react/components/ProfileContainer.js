@@ -3,6 +3,7 @@ import PlantIndex from "./PlantIndex.js"
 import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
 import getCurrentWeek from "./services/getCurrentWeek.js"
+import FetchUsers from "./services/fetchUsers.js"
 
 const ProfileContainer = props => {
   const [userData, setUserData] = useState({
@@ -15,24 +16,13 @@ const ProfileContainer = props => {
   const [plantRemoved, setPlantRemoved] = useState(null)
 
   const fetchUser = async () => {
-    try {
-      const response = await fetch(`/api/v1/users/${props.match.params.id}`)
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      const responseBody = await response.json()
-      const userData = responseBody.userData
+    const userInfo = await FetchUsers.getUserData(props.match.params.id)
       setUserData({
-        id: userData.user.id,
-        firstName: userData.user.first_name,
-        plantGoal: userData.user.plant_goal,
-        plantNumber: userData.plantTotal
+        id: userInfo.user.id,
+        firstName: userInfo.user.first_name,
+        plantGoal: userInfo.user.plant_goal,
+        plantNumber: userInfo.plantTotal
       })
-    }
-    catch (error) {
-      console.error(`Error in Fetch: ${error.message}`)
-    }
   }
 
   useEffect(() => {
