@@ -1,8 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchBar from './SearchBar.js'
 import SearchResultTile from './SearchResultTile.js'
-import PlantAddedTile from './PlantAddedTile.js'
+import ToastContainer from './ToastContainer.js'
+import FetchUsers from './services/fetchUsers.js'
 
 const SearchContainer = props => {
   const [searchResult, setSearchResult] = useState({
@@ -12,6 +12,16 @@ const SearchContainer = props => {
   })
   const [plantAdded, setPlantAdded] = useState(false)
   const [error, setError] = useState("")
+  const [userId, setUserId] = useState(null)
+
+  const fetchUser = async () => {
+    const userData = await FetchUsers.findUser()
+    setUserId(userData)
+  }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
 
   let searchResultDisplay = null
   if (searchResult.id) {
@@ -23,7 +33,10 @@ const SearchContainer = props => {
       setError={setError}
     />
   } else if (plantAdded === true) {
-    searchResultDisplay = <PlantAddedTile/>
+    searchResultDisplay =
+    <ToastContainer
+      userId={userId}
+    />
   }
 
   return (

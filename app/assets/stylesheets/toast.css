@@ -1,8 +1,8 @@
 .toastjs-container {
 	position: absolute; /* Fallback */
 	position: fixed;
-	bottom: 30px;
-	left: 30px;
+	bottom: 150px;
+	left: 60px;
 	width: calc(100% - 60px);
 	max-width: 400px;
 
@@ -46,7 +46,7 @@
 	border: 0;
 	border-radius: 4px;
 
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: inherit;
 	font-size: 14px;
 
 	display: inline-block;
@@ -56,13 +56,14 @@
 }
 
 .toastjs-btn--custom {
-	background: rgb(50,50,50);
-	color: #fff;
+	background-color: #f4ea00;
+	color: black;
 }
 
 
 .toastjs-btn:hover,
 .toastjs-btn:focus {
+	background-color: #D8CF04;;
 	outline: none;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
 }
