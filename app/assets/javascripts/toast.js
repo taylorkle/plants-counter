@@ -9,6 +9,7 @@ function Toast(options) {
 
     this.options = options;
     this.options.type = options.type || 'default';
+    this.options.fadeAway = options.fadeAway || 3000;
 
     this.toastContainerEl = document.querySelector('.toastjs-container');
     this.toastEl = document.querySelector('.toastjs');
@@ -49,6 +50,7 @@ Toast.prototype._addEventListeners = function () {
         var customButtonsElArray = Array.prototype.slice.call(document.querySelectorAll('.toastjs-btn--custom'));
         customButtonsElArray.map(function (el, index) {
             el.addEventListener('click', function (event) {
+                _this2._close()
                 return _this2.options.customButtons[index].onClick(event);
             });
         });
@@ -109,5 +111,8 @@ Toast.prototype._init = function () {
     }).then(function () {
         _this4._open();
         _this4._addEventListeners();
-    });
+    }).then(() => new Promise(resolve => setTimeout(resolve, _this4.options.fadeAway)))
+    .then(function() {
+        _this4._close();
+    })
 };

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 const ToastContainer = props => {
 
   let navigate = useNavigate()
+  const params = useParams()
 
   // const makeToast = () => {
   new Toast({ //rendered following footer in erb
@@ -12,7 +13,6 @@ const ToastContainer = props => {
       [
         {text: "View on Profile", onClick: () => {
           navigate(`/users/${props.userId}`)
-          const params = useParams();
           }
         }
       ]
