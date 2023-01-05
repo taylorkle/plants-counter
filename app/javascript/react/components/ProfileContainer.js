@@ -4,6 +4,8 @@ import NewGoalForm from "./NewGoalForm.js"
 import ProgressBar from "./ProgressBar.js"
 import getCurrentWeek from "./services/getCurrentWeek.js"
 import FetchUsers from "./services/fetchUsers.js"
+import { useParams } from "react-router-dom"
+
 
 const ProfileContainer = props => {
   const [userData, setUserData] = useState({
@@ -15,8 +17,10 @@ const ProfileContainer = props => {
   const [showForm, setShowForm] = useState(false)
   const [plantRemoved, setPlantRemoved] = useState(null)
 
+  const { userId } = useParams()
+
   const fetchUser = async () => {
-    const userInfo = await FetchUsers.getUserData(props.match.params.id)
+    const userInfo = await FetchUsers.getUserData({ userId })
       setUserData({
         id: userInfo.user.id,
         firstName: userInfo.user.first_name,

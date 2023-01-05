@@ -1,18 +1,18 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Homepage from './Homepage.js'
 import ProfileContainer from './ProfileContainer.js'
 import SearchContainer from './SearchContainer.js'
-import { BrowserRouter, Route, Switch } from "react-router-dom"
 
-export const App = (props) => {
+export const App = props => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route exact path='/home' component={Homepage} />
-        <Route exact path='/users/:id' component={ProfileContainer} />
-        <Route exact path='/plants' component={SearchContainer} />
-      </Switch>
+      <Routes>
+        <Route exact path='/' element={<Homepage />} />
+        <Route exact path='/home' element={<Homepage />} />
+        <Route exact path='/users/:id' element={<ProfileContainer />} />
+        <Route exact path='/plants' element={<SearchContainer />} />
+      </Routes>
     </BrowserRouter>
   )
 }
