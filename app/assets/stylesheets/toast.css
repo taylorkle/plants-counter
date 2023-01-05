@@ -1,8 +1,7 @@
 .toastjs-container {
-	position: absolute; /* Fallback */
-	position: fixed;
-	bottom: 150px;
-	left: 60px;
+	position: absolute;
+	bottom: 95px;
+	left: 40px;
 	width: calc(100% - 60px);
 	max-width: 400px;
 

@@ -6,8 +6,7 @@ const ToastContainer = props => {
   let navigate = useNavigate()
   const params = useParams()
 
-  // const makeToast = () => {
-  new Toast({ //rendered following footer in erb
+  new Toast({
     message: "Plant Added Successfully!",
     customButtons:
       [
@@ -17,13 +16,10 @@ const ToastContainer = props => {
         }
       ]
   })
-// }
 
 
   return(
     <div>
-    {/* // <div className="ToastContainer">
-    //   {makeToast()} */}
     </div>
   )
 }
